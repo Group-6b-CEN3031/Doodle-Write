@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import Cart from './Cart';
+import Cart from "./Cart";
 
 class Header extends React.Component {
     constructor(props) {
@@ -19,8 +19,8 @@ class Header extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <nav class="navbar sticky-top navbar-expand-lg navbar-light shadow bg-white rounded" style={{backgroundColor: '#ffffff'}}>
-                    <text class="navbar-brand">Scoot n' Doodle</text>
+                <nav class="navbar sticky-top navbar-expand-lg navbar-light shadow bg-white rounded" style={{backgroundColor: "#ffffff"}}>
+                    <text class="navbar-brand">Scoot n" Doodle</text>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

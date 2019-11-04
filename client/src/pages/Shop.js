@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import Header from './../components/Header';
-import Footer from './../components/Footer';
+import Header from "./../components/Header";
+import Footer from "./../components/Footer";
 
 class Shop extends React.Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class Shop extends React.Component {
     render() { 
         return (
             <React.Fragment>
-                <Header tab='Shop'/>
+                <Header tab="Shop"/>
                 Shop
                 <Footer/>
             </React.Fragment>

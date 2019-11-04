@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import Header from './../components/Header';
-import Footer from './../components/Footer';
+import Header from "./../components/Header";
+import Footer from "./../components/Footer";
 
 class ContactUs extends React.Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class ContactUs extends React.Component {
     render() { 
         return (
             <React.Fragment>
-                <Header tab='Contact Us'/>
+                <Header tab="Contact Us"/>
                 Contact Us
                 <Footer/>
             </React.Fragment>

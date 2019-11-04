@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import Sidebar from 'react-sidebar'
+import Sidebar from "react-sidebar"
 
 class Cart extends React.Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class Cart extends React.Component {
                 styles={sideBarStyle}
                 sidebar={
                     <>
-                        <div style={{marginTop: 60,textAlign: 'center'}}>Cart</div>
+                        <div style={{marginTop: 60,textAlign: "center"}}>Cart</div>
                     </>
                 }
             />
