@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "scoot n doodle",
+      "image": "xxx",
+      "description": "the name that is copyrighted",
+      "price": 9.99
+    },
+    {
+      "name": "doodle write",
+      "image": "yyy",
+      "description": "the new name",
+      "price": 19.99
+    }
+  ]
+}
