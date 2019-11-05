@@ -3,7 +3,7 @@ const path = require("path"),
     mongoose = require("mongoose"),
     morgan = require("morgan"),
     bodyParser = require("body-parser"),
-    exampleRouter = require("../routes/examples.server.routes");
+    exampleRouter = require("./routes/examples.server.routes");
 
 module.exports.init = () => {
     /* 
@@ -30,11 +30,11 @@ module.exports.init = () => {
 
     if (process.env.NODE_ENV === "production") {
         // Serve any static files
-        app.use(express.static(path.join(__dirname, "../../client/build")));
+        app.use(express.static(path.join(__dirname, "../client/build")));
 
         // Handle React routing, return all requests to React app
         app.get("*", function(req, res) {
-            res.sendFile(path.join(__dirname, "../../client/build", "index.html"));
+            res.sendFile(path.join(__dirname, "../client/build", "index.html"));
         });
     }
 
