@@ -30,7 +30,6 @@ export default Cart;
 const sideBarStyle = {
     sidebar: {
         background: "white",
-        width: 350,
-        position: "fixed"
+        width: 350
     },
 }
