@@ -44,6 +44,12 @@ export default Shop;
 const fakeDB = [
     {
         image: ".../100px180/",
+        name: "Grip 0",
+        price: "$0",
+        description: "Grip 0: Some quick example text to build on the card title and make up the bulk of the card's content",
+    },
+    {
+        image: ".../100px180/",
         name: "Grip 1",
         price: "$10",
         description: "Grip 1: Some quick example text to build on the card title and make up the bulk of the card's content",
@@ -71,11 +77,5 @@ const fakeDB = [
         name: "Grip 5",
         price: "$50",
         description: "Grip 5: Some quick example text to build on the card title and make up the bulk of the card's content",
-    },
-    {
-        image: ".../100px180/",
-        name: "Grip 6",
-        price: "$60",
-        description: "Grip 6: Some quick example text to build on the card title and make up the bulk of the card's content",
     },
 ]
