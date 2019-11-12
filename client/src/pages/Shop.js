@@ -5,6 +5,20 @@ import Footer from "./../components/Footer";
 
 import Hands from "./../assets/hands.jpeg";
 
+import itemsDB from "../assets/items.json";
+
+//var Items = require('../../../server/controllers/examples.server.controller.js');
+/*var itemsDB;
+
+Items.find ({}, function (err, items) {
+    if (err) {
+        throw (err)
+    }
+    else {
+        itemsDB = items;
+    }
+})
+*/
 class Shop extends React.Component {
     constructor(props) {
         super(props);
@@ -21,7 +35,7 @@ class Shop extends React.Component {
                     <img src={Hands} alt="Hands" style={styles.handsImg}/>
                 </div>
                 <div class="row justify-content-around" style={{padding: 100}}>
-                    {fakeDB.map((item, index) => {
+                    {itemsDB.items.map((item, index) => {
                         return(
                             <div class="col-sm-4" style={{marginBottom: 75}}>
                                 <div class="card" style={{width: "20rem", height: "36rem"}}>
@@ -57,7 +71,7 @@ const styles = {
         maxWidth: "100%"
     }
 }
-
+/*
 const fakeDB = [
     {
         image: ".../100px180/",
@@ -96,3 +110,4 @@ const fakeDB = [
         description: "Grip 5: Some quick example text to build on the card title and make up the bulk of the card's content",
     },
 ]
+*/
