@@ -3,6 +3,8 @@ import React from "react";
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
 
+import Hands from "./../assets/hands.jpeg";
+
 class Shop extends React.Component {
     constructor(props) {
         super(props);
@@ -14,6 +16,10 @@ class Shop extends React.Component {
         return (
             <React.Fragment>
                 <Header tab="Shop"/>
+                <div style={styles.sloganBar}>PAINT, COLOR, DRAW, WRITE, AND LEARN !!!</div>
+                <div>
+                    <img src={Hands} alt="Hands" style={styles.handsImg}/>
+                </div>
                 <div class="row justify-content-around" style={{padding: 100}}>
                     {fakeDB.map((item, index) => {
                         return(
@@ -40,6 +46,17 @@ class Shop extends React.Component {
 }
  
 export default Shop;
+
+const styles = {
+    sloganBar: {
+        background: "#307BFF",
+        color: "white",
+        textAlign: "center"
+    },
+    handsImg: {
+        maxWidth: "100%"
+    }
+}
 
 const fakeDB = [
     {
