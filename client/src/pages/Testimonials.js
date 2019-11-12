@@ -3,7 +3,6 @@ import React from "react";
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
 
-import Hands from "./../assets/hands.jpeg";
 import quotes from "./../assets/quotes.jpg";
 
 class Testimonials extends React.Component {
@@ -17,10 +16,6 @@ class Testimonials extends React.Component {
         return (
             <React.Fragment>
                 <Header tab="Testimonials"/>
-                <div style={styles.sloganBar}>PAINT, CLOLOR, DRAW, WRITE, AND LEARN !!!</div>
-                <div>
-                	<img src={Hands} alt="Hands" style={styles.handsImg}/>
-                </div>
                 <div class="container text-center">
                 	<div class="row justify-content-center">
                 		<div style={styles.header}>
@@ -40,7 +35,7 @@ class Testimonials extends React.Component {
                 				<li>"I found myself using it after my client had left for my boardwork. It was comfortable to use and fun!" -Douglene J. Occupational Therapist</li>
                 			</ul>
                 		</div>
-                	</div>
+                	</div> 
                 </div>
                 <div style={{height: 100}}/>
                 <Footer/>
