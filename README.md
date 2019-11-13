@@ -13,7 +13,9 @@ This repository aims to assist you in beginning work on a MERN stack application
 
 Since this project will hold both the client application and the server application there will be node modules in two different places. First run `npm install` from the root. After this you will run `npm run-script install-all` from the root. From now on run this command anytime you want to install all modules again. This is a script we have defined in package.json .
 
-This app can be deployed directly to heroku since there is a script defined in package.json which will automatically handle building and deploying the app. For more information on deploying to heroku reference the extra resources at the bottom of this file. 
+This app can be deployed directly to heroku since there is a script 
+defined in package.json which will automatically handle building and 
+deploying the app. For more information on deploying to heroku reference the extra resources at the bottom of this file. 
 
 ## File structure
 #### `client` - Holds the client application
@@ -79,3 +81,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
