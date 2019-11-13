@@ -3,7 +3,6 @@ import {
     Card, CardImg, CardText, 
     CardTitle, CardSubtitle, Button
   } from 'reactstrap';
-
 class CartItemCard extends Component{
     constructor(props) {
         super(props);
