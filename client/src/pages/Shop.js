@@ -3,7 +3,6 @@ import React from "react";
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
 
-import itemDB from "./../assets/items.json";
 import api from "../api";
 
 class Shop extends React.Component {
