@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "react-sidebar";
-import { Container, Col } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import CartItemCard from "./CartItemCard";
 
 class Cart extends React.Component {
