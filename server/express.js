@@ -1,16 +1,18 @@
 const path = require("path"),
     express = require("express"),
+    config = require("./config")
     mongoose = require("mongoose"),
     morgan = require("morgan"),
     bodyParser = require("body-parser"),
-    exampleRouter = require("./routes/examples.server.routes");
+    cors = require("cors"),
+    shopRouter = require("./routes/shop.server.routes");
 
 module.exports.init = () => {
     /* 
         connect to database
         - reference README for db uri
     */
-    mongoose.connect(process.env.DB_URI || require("./config").db.uri, {
+    mongoose.connect(config.db.uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
@@ -19,6 +21,7 @@ module.exports.init = () => {
 
     // initialize app
     const app = express();
+    const apiPort = 3001;
 
     // enable request logging for development debugging
     app.use(morgan("dev"));
@@ -26,8 +29,12 @@ module.exports.init = () => {
     // body parsing middleware
     app.use(bodyParser.json());
 
+    // connect express middleware with additional options
+    app.use(cors());
+
     // add a router
-    app.use("/api/example", exampleRouter);
+    app.use(shopRouter);
+    app.listen (apiPort, () => console.log ('api listening on port ' + apiPort))
 
     if (process.env.NODE_ENV === "production") {
         // Serve any static files

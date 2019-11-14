@@ -4,20 +4,31 @@ import Header from "./../components/Header";
 import Footer from "./../components/Footer";
 
 import itemDB from "./../assets/items.json";
+import api from "../api";
 
 class Shop extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            items: [],
         }
     }
+
+    componentDidMount = async () => {
+        await api.displayAll().then (items => {
+            this.setState ({
+                items: items.data.data,
+            })
+        })
+    }
     render() {
+        const { items } = this.state
+        console.log ('database items?', items)
         return (
             <React.Fragment>
                 <Header tab="Shop"/>
                 <div class="row justify-content-around" style={{padding: 100}}>
-                    {itemDB.items.map((item, index) => {
+                    {items.map((item, index) => {
                         return(
                             <div class="col-sm-4" style={{marginBottom: 75}}>
                                 <div class="card" style={{width: "20rem", height: "36rem"}}>
