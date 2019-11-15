@@ -35,7 +35,7 @@ class Shop extends React.Component {
                                     <div class="card-body d-flex flex-column">
                                         <div class="row justify-content-between" style={{marginLeft: 1, marginRight: 1}}>
                                             <h5 class="card-title">{item.name}</h5>
-                                            <i>{item.price}</i>
+                                            <i>{"$\t" + item.price}</i>
                                         </div>
                                         <p class="card-text">{item.description}</p>
                                         <button class="btn btn-primary mt-auto">Add To Cart</button>
