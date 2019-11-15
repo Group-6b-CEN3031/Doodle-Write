@@ -1,6 +1,5 @@
 import React from "react";
-import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./pages/Home";
@@ -10,6 +9,11 @@ import Shop from "./pages/Shop";
 import NotFound from "./pages/NotFound";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+  
+  }
+
   render() { 
     return (
       <React.Fragment>
