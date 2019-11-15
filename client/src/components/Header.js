@@ -9,6 +9,7 @@ class Header extends React.Component {
             isCartOpen: false
         }
     }
+    
     toggleCartVisibility = () => {
         this.setState({
             ...this.state,

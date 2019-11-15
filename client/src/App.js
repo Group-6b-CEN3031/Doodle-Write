@@ -1,6 +1,5 @@
 import React from "react";
-import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./pages/Home";
@@ -25,7 +24,6 @@ class App extends React.Component {
             <Route exact path="/contact-us" component={ContactUs} />
             <Route exact path="/shop" component={Shop} />
             <Route component={NotFound} />
-           
           </Switch>
         </Router>
       </React.Fragment>

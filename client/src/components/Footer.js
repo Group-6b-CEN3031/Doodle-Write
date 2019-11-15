@@ -9,6 +9,7 @@ class Footer extends React.Component {
 
         }
     }
+    
     render() { 
         return (
             <nav class="navbar fixed-bottom navbar-expand-lg navbar-light shadow-lg bg-white rounded" style={{backgroundColor: "#ffffff"}}>
