@@ -9,16 +9,13 @@ class Cart extends React.Component {
       total: 0
     }
   }
-  
-  componentWillMount(){
-    this.calculateTotal()
-  }
 
-  calculateTotal = () => {
+  componentWillMount(){
     let newTotal = 0
     this.state.items.forEach(item => {
       newTotal += item.price
     })
+
     this.setState({
       ...this.state,
       total: newTotal
@@ -27,11 +24,17 @@ class Cart extends React.Component {
 
   removeItem = (index) => {
     let newItems= this.state.items.filter((directory, indx) => indx !== index)
+
+    let newTotal = 0
+    newItems.forEach(item => {
+      newTotal += item.price
+    })
+
     this.setState({
       ...this.state,
-      items: newItems
+      items: newItems,
+      total: newTotal
     })
-    this.calculateTotal()
   }
 
   render() {    
@@ -43,28 +46,36 @@ class Cart extends React.Component {
             sidebar= {                          
               <div class="container">
                 <div style={{height: 65}}/>
-                {this.state.items.map((item, index) => {
-                  return( 
-                    <div class="row justify-content-between" style={sideBarStyle.item}>
-                      <div class="col">
-                        <div class="row">
-                          <button class="btn btn-primary" onClick={() => this.removeItem(index)}>X</button>
-                          <div style={{marginLeft: 15}}>
-                            <div>{item.name}</div>
-                            <div>Qty: 1</div>
+                <div style={sideBarStyle.title}>My Cart</div>
+                {this.state.items.length
+                ?
+                  <div>
+                    {this.state.items.map((item, index) => {
+                      return( 
+                        <div class="row justify-content-between" style={sideBarStyle.item}>
+                          <div class="col">
+                            <div class="row">
+                              <button class="btn btn-primary" onClick={() => this.removeItem(index)}>X</button>
+                              <div style={{marginLeft: 15}}>
+                                <div>{item.name}</div>
+                                <div>Qty: 1</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col" style={{alignSelf: "center"}}>
+                            <t style={{fontSize: 15}}>${item.price}</t>
                           </div>
                         </div>
-                      </div>
-                      <div class="col" style={{alignSelf: "center"}}>
-                        <t style={{fontSize: 15}}>${item.price}</t>
-                      </div>
-                    </div>
-                  )})}
-                <p style={sideBarStyle.total}>Total ({fakeDB.length} Items): ${this.state.total}</p>
-                <p style={sideBarStyle.button}> 
-                  <button class="btn btn-primary">Checkout</button>
-                </p>
-                <div style={{height: 65}}/>
+                      )})}
+                    <p style={sideBarStyle.total}>Total ({fakeDB.length} Items): ${this.state.total}</p>
+                    <p style={sideBarStyle.button}> 
+                      <button class="btn btn-primary">Checkout</button>
+                    </p>
+                    <div style={{height: 65}}/>
+                  </div>
+                :
+                  <div style={{textAlign: "center", padding: 15}}>Your shopping cart is empty</div>
+                }
               </div>
             }
         />
@@ -79,6 +90,12 @@ const sideBarStyle = {
     background: "white",
     width: 300,
     position: "fixed"
+  },
+  title: {
+    textAlign: "center",
+    fontSize: 25,
+    padding: 10,
+    borderBottom:  "2px solid #E1E8EE",
   },
   item: {
     textAlign: "right",
