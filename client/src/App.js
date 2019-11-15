@@ -7,8 +7,6 @@ import Testimonials from "./pages/Testimonials";
 import ContactUs from "./pages/ContactUs";
 import Shop from "./pages/Shop";
 import NotFound from "./pages/NotFound";
-import Cart from './components/Cart';
-import CartItemCard from "./components/CartItemCard";
 
 class App extends React.Component {
   constructor(props) {
