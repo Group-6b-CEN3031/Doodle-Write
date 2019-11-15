@@ -27,7 +27,7 @@ render() {
                 <div style={sideBarStyle.title} {...total =0 }> Cart </div>
                 
                 {fakeDB.map((item, index) => {
-                  
+                  {quanity }
                   {total += fakeDB[index].price}
 
                     return( 
@@ -82,6 +82,7 @@ render() {
 export default Cart;
 
 var total = 0;
+var quanity = 1;
 
 const fakeDB = [
   {
