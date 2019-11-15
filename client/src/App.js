@@ -10,6 +10,11 @@ import Shop from "./pages/Shop";
 import NotFound from "./pages/NotFound";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+  
+  }
+
   render() { 
     return (
       <React.Fragment>
@@ -20,6 +25,7 @@ class App extends React.Component {
             <Route exact path="/contact-us" component={ContactUs} />
             <Route exact path="/shop" component={Shop} />
             <Route component={NotFound} />
+           
           </Switch>
         </Router>
       </React.Fragment>
