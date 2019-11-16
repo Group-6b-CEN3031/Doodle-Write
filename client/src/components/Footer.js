@@ -17,7 +17,7 @@ class Footer extends React.Component {
                         <FontAwesomeIcon icon={faInstagram} size="2x"/>
                     </a>
                 </div>
-                © 2019 Scoot n' Doodle Co.
+                © 2019 Doodle Write Co.
             </nav>
         )
     }

@@ -63,7 +63,7 @@ class Home extends React.Component {
                             <div style={styles.h2Text}>Pre-Writing Doodling Makes it Easier to Learn How to Write Letters and Numbers</div>
                             <div style={{...styles.grayLine, width: 525}}/>
                             <ul class="text-left" style={{color: "#5e5e5e"}}>
-                                <li>Delayed learners with the assistance of Scoot n' Doodle are able to participate in coloring activities, painting projects or writing assignments.</li>
+                                <li>Delayed learners with the assistance of Doodle Write are able to participate in coloring activities, painting projects or writing assignments.</li>
                                 <li>With strong hand muscles, children experience less fatigue and hand soreness.</li>
                                 <li>We want everyone to be able to draw and color comfortably.</li>
                             </ul>
@@ -79,7 +79,7 @@ class Home extends React.Component {
                             <div style={{...styles.grayLine, width: 275}}/>
                             <ul class="text-left" style={{color: "#5e5e5e"}}>
                                 <li>Scribbling is a pre-writing skill and helps to develop the skills needed for handwriting.</li>
-                                <li>Scoot n' Doodle makes gripping small pencils and crayons easier for tiny hands and helps prevent choking.</li>
+                                <li>Doodle Write makes gripping small pencils and crayons easier for tiny hands and helps prevent choking.</li>
                                 <li>60% of choking deaths in young children are not food related.</li>
                             </ul>
                         </div>
@@ -101,7 +101,7 @@ class Home extends React.Component {
                             <ul class="text-left" style={{color: "#5e5e5e"}}>
                                 <li>Preschoolers begin building the skills they need for handwriting through play!</li>
                                 <li>Handwriting development begins before a child picks up a pencil.</li>
-                                <li>Scoot n' Doodle is a  fun new way to  draw , paint, write, color and learn pre-writing  skills with ease!</li>
+                                <li>Doodle Write is a  fun new way to  draw , paint, write, color and learn pre-writing  skills with ease!</li>
                             </ul>
                         </div>
                     </div>
