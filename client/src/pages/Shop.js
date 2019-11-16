@@ -1,21 +1,16 @@
 import React from "react";
+import {connect} from 'react-redux';
 
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
 
 class Shop extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
     render() { 
         return (
             <React.Fragment>
                 <Header tab="Shop"/>
                 <div class="row justify-content-around" style={{padding: 100}}>
-                    {fakeDB.map((item, index) => {
+                    {this.props.shopItems.map((item, index) => {
                         return(
                             <div class="col-sm-4" style={{marginBottom: 75}}>
                                 <div class="card" style={{width: "20rem", height: "36rem"}}>
@@ -26,7 +21,7 @@ class Shop extends React.Component {
                                             <i>${item.price}</i>
                                         </div>
                                         <p class="card-text">{item.description}</p>
-                                        <button class="btn btn-primary mt-auto">Add To Cart</button>
+                                        <button class="btn btn-primary mt-auto" onClick={() => this.props.addToCart(index)}>Add To Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -79,3 +74,18 @@ const fakeDB = [
         description: "Grip 5: Some quick example text to build on the card title and make up the bulk of the card's content",
     },
 ]
+function mapStateToProps(state){
+    return{
+      shopItems: state.shopItems,
+      cartItems: state.cartItems,
+      totalCost: state.totalCost
+    }
+  }
+  
+  function mapDispatchToProps(dispatch){
+    return{
+        addToCart: (shopItemIndex) => dispatch({type: 'ADD_TO_CART', shopItemIndex}),
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Shop)

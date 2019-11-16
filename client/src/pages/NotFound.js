@@ -6,13 +6,6 @@ import Footer from "./../components/Footer";
 import Frown from "./../assets/frown.png";
 
 class NotFound extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-    
     render() { 
         return (
             <React.Fragment>

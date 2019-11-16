@@ -6,12 +6,6 @@ import Footer from "./../components/Footer";
 import quotes from "./../assets/quotes.jpg";
 
 class Testimonials extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
     render() { 
         return (
             <React.Fragment>

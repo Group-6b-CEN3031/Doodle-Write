@@ -1,43 +1,10 @@
 import React from "react";
+import {connect} from 'react-redux';
 import Sidebar from "react-sidebar";
 
 class Cart extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: fakeDB,
-      total: 0
-    }
-  }
-
-  componentWillMount(){
-    let newTotal = 0
-    this.state.items.forEach(item => {
-      newTotal += item.price
-    })
-
-    this.setState({
-      ...this.state,
-      total: newTotal
-    })
-  }
-
-  removeItem = (index) => {
-    let newItems= this.state.items.filter((directory, indx) => indx !== index)
-
-    let newTotal = 0
-    newItems.forEach(item => {
-      newTotal += item.price
-    })
-
-    this.setState({
-      ...this.state,
-      items: newItems,
-      total: newTotal
-    })
-  }
-
-  render() {    
+  render() {
+    let list = new Array(25).fill(0)
     return (    
         <Sidebar
             open={this.props.isCartOpen}
@@ -47,27 +14,34 @@ class Cart extends React.Component {
               <div class="container">
                 <div style={{height: 65}}/>
                 <div style={sideBarStyle.title}>My Cart</div>
-                {this.state.items.length
+                {this.props.cartItems.length
                 ?
                   <div>
-                    {this.state.items.map((item, index) => {
+                    {this.props.cartItems.map((item, cartItemsIndex) => {
                       return( 
                         <div class="row justify-content-between" style={sideBarStyle.item}>
                           <div class="col">
                             <div class="row">
-                              <button class="btn btn-primary" onClick={() => this.removeItem(index)}>X</button>
-                              <div style={{marginLeft: 15}}>
-                                <div>{item.name}</div>
-                                <div>Qty: 1</div>
+                              <button class="btn btn-primary" onClick={() => this.props.removeItem(cartItemsIndex)}>X</button>
+                              <div>
+                                <div class="row" style={{marginLeft: 15}}>{item.name}</div>
+                                <div class="row" style={{marginLeft: 15}}>{"Qty: " + item.quantity}</div>
                               </div>
                             </div>
                           </div>
+                          <select class="col form-control form-control-sm" style={{alignSelf: "center"}}>
+                            {list.map((item, qnty) => {
+                              return(
+                                <option>{qnty + 1}</option>
+                              )
+                            })}
+                          </select>
                           <div class="col" style={{alignSelf: "center"}}>
                             <t style={{fontSize: 15}}>${item.price}</t>
                           </div>
                         </div>
                       )})}
-                    <p style={sideBarStyle.total}>Total ({fakeDB.length} Items): ${this.state.total}</p>
+                    <p style={sideBarStyle.total}>Total ({this.props.cartItems.length} Items): ${this.props.totalCost}</p>
                     <p style={sideBarStyle.button}> 
                       <button class="btn btn-primary">Checkout</button>
                     </p>
@@ -83,7 +57,22 @@ class Cart extends React.Component {
   }
 }
 
-export default Cart;
+function mapStateToProps(state){
+  return{
+    shopItems: state.shopItems,
+    cartItems: state.cartItems,
+    totalCost: state.totalCost
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+      removeItem: (index) => dispatch({type: 'REMOVE_ITEM', index}),
+      changeQuantity: (cartItemsIndex, qnty) => dispatch({type: 'CHANGE_QUANTITY', cartItemsIndex, qnty})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)
 
 const sideBarStyle = {
   sidebar: {
@@ -113,41 +102,3 @@ const sideBarStyle = {
   }
 }
 
-const fakeDB = [
-  {
-    image: ".../100px180/",
-    name: "Grip 0",
-    price: 0,
-    description: "Grip 0: Some quick example text to build on the card title and make up the bulk of the card's content"
-  },
-  {
-    image: ".../100px180/",
-    name: "Grip 1",
-    price: 10,
-    description: "Grip 1: Some quick example text to build on the card title and make up the bulk of the card's content"
-  },
-  {
-    image: ".../100px180/",
-    name: "Grip 2",
-    price: 20,
-    description: "Grip 2: Some quick example text to build on the card title and make up the bulk of the card's content"
-  },
-  {
-    image: ".../100px180/",
-    name: "Grip 3",
-    price: 30,
-    description: "Grip 3: Some quick example text to build on the card title and make up the bulk of the card's content"
-  },
-  {
-    image: ".../100px180/",
-    name: "Grip 4",
-    price: 40,
-    description: "Grip 4: Some quick example text to build on the card title and make up the bulk of the card's content"
-  },
-  {
-    image: ".../100px180/",
-    name: "Grip 5",
-    price: 50,
-    description: "Grip 5: Some quick example text to build on the card title and make up the bulk of the card's content"
-  }
-]
