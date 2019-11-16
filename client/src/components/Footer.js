@@ -3,13 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookSquare, faTwitterSquare, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 class Footer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-    
     render() { 
         return (
             <nav class="navbar fixed-bottom navbar-expand-lg navbar-light shadow-lg bg-white rounded" style={{backgroundColor: "#ffffff"}}>
@@ -24,7 +17,7 @@ class Footer extends React.Component {
                         <FontAwesomeIcon icon={faInstagram} size="2x"/>
                     </a>
                 </div>
-                © 2019 Scoot n' Doodle Co.
+                © 2019 Doodle Write Co.
             </nav>
         )
     }

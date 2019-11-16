@@ -1,4 +1,5 @@
 import React from "react";
+import {connect} from 'react-redux';
 
 import Cart from "./Cart";
 
@@ -21,7 +22,7 @@ class Header extends React.Component {
         return (
             <React.Fragment>
                 <nav class="navbar sticky-top navbar-expand-lg navbar-light shadow bg-white rounded" style={{backgroundColor: "#ffffff"}}>
-                    <text class="navbar-brand">Scoot n' Doodle</text>
+                    <text class="navbar-brand">Doodle Write</text>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -42,7 +43,7 @@ class Header extends React.Component {
                         </ul>
                     </div>
                     <button type="button" class="btn btn-primary" onClick={() => this.setState({...this.state, isCartOpen: !this.state.isCartOpen})}>
-                        Cart <span class="badge badge-light">0</span>
+                        Cart <span class="badge badge-light">{this.props.cartItems.length}</span>
                     </button>
                 </nav>
                 <Cart isCartOpen={this.state.isCartOpen}/>
@@ -51,4 +52,18 @@ class Header extends React.Component {
     }
 }
  
-export default Header;
+function mapStateToProps(state){
+    return{
+      shopItems: state.shopItems,
+      cartItems: state.cartItems,
+      totalCost: state.totalCost
+    }
+  }
+  
+  function mapDispatchToProps(dispatch){
+    return{
+
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Header)

@@ -1,4 +1,6 @@
 import React from "react";
+import {Provider} from 'react-redux';
+import Store from './redux/store';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -9,14 +11,9 @@ import Shop from "./pages/Shop";
 import NotFound from "./pages/NotFound";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  
-  }
-
   render() { 
     return (
-      <React.Fragment>
+      <Provider store={Store}>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -26,7 +23,7 @@ class App extends React.Component {
             <Route component={NotFound} />
           </Switch>
         </Router>
-      </React.Fragment>
+      </Provider>
     )
   }
 }

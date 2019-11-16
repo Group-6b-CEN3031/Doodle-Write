@@ -1,4 +1,5 @@
 import React from "react";
+import {connect} from 'react-redux';
 
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
@@ -6,28 +7,12 @@ import Footer from "./../components/Footer";
 import api from "../api";
 
 class Shop extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            items: [],
-        }
-    }
-
-    componentDidMount = async () => {
-        await api.displayAll().then (items => {
-            this.setState ({
-                items: items.data.data,
-            })
-        })
-    }
-    render() {
-        const { items } = this.state
-        console.log ('database items?', items)
+    render() { 
         return (
             <React.Fragment>
                 <Header tab="Shop"/>
                 <div class="row justify-content-around" style={{padding: 100}}>
-                    {items.map((item, index) => {
+                    {this.props.shopItems.map((item, index) => {
                         return(
                             <div class="col-sm-4" style={{marginBottom: 75}}>
                                 <div class="card" style={{width: "20rem", height: "36rem"}}>
@@ -38,7 +23,7 @@ class Shop extends React.Component {
                                             <i>{"$\t" + item.price}</i>
                                         </div>
                                         <p class="card-text">{item.description}</p>
-                                        <button class="btn btn-primary mt-auto">Add To Cart</button>
+                                        <button class="btn btn-primary mt-auto" onClick={() => this.props.addToCart(index)}>Add To Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -51,4 +36,18 @@ class Shop extends React.Component {
     }
 }
  
-export default Shop;
+function mapStateToProps(state){
+    return{
+      shopItems: state.shopItems,
+      cartItems: state.cartItems,
+      totalCost: state.totalCost
+    }
+  }
+  
+  function mapDispatchToProps(dispatch){
+    return{
+        addToCart: (shopItemIndex) => dispatch({type: 'ADD_TO_CART', shopItemIndex}),
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Shop)
