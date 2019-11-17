@@ -13,7 +13,7 @@ class Shop extends React.Component {
                 <Row className="justify-content-around" style={{marginLeft: 10}}>
                     {this.props.shopItems.map((item, index) => {
                         return(
-                            <Col xs={12} md={3} style={{paddingTop: 100}}>
+                            <Col xs={12} md={3} style={{paddingTop: 150}}>
                                 <Card style={{width: "20rem", height: "36rem"}}>
                                     <Card.Body className="d-flex flex-column">
                                         <Card.Img variant="top" src={item.image}/>
@@ -31,7 +31,7 @@ class Shop extends React.Component {
                         )
                     })}
                 </Row>
-                <div style={{height: 50}}/>
+                <div style={{height: 200}}/>
                 <Footer/>
             </React.Fragment>
         )
