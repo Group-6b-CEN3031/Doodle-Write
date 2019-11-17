@@ -1,50 +1,18 @@
 import {createStore} from 'redux';
 
 const initialState = {
-    shopItems: [
-        {
-            image: ".../100px180/",
-            name: "Grip 0",
-            price: 0,
-            description: "Grip 0: Some quick example text to build on the card title and make up the bulk of the card's content",
-        },
-        {
-            image: ".../100px180/",
-            name: "Grip 1",
-            price: 10,
-            description: "Grip 1: Some quick example text to build on the card title and make up the bulk of the card's content",
-        },
-        {
-            image: ".../100px180/",
-            name: "Grip 2",
-            price: 20,
-            description: "Grip 2: Some quick example text to build on the card title and make up the bulk of the card's content",
-        },
-        {
-            image: ".../100px180/",
-            name: "Grip 3",
-            price: 30,
-            description: "Grip 3: Some quick example text to build on the card title and make up the bulk of the card's content",
-        },
-        {
-            image: ".../100px180/",
-            name: "Grip 4",
-            price: 40,
-            description: "Grip 4: Some quick example text to build on the card title and make up the bulk of the card's content",
-        },
-        {
-            image: ".../100px180/",
-            name: "Grip 5",
-            price: 50,
-            description: "Grip 5: Some quick example text to build on the card title and make up the bulk of the card's content",
-        }
-    ],
+    shopItems: [],
     cartItems: [],
     totalCost: 0
 }
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
+        case "LOAD_SHOP_FROM_DB":
+            return{
+                ...state,
+                shopItems: action.data
+            }
         case "ADD_TO_CART":
             if(state.cartItems.some(item => item.name === state.shopItems[action.shopItemIndex].name)){
                 alert("This item is already in your shopping cart")
