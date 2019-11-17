@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from 'react-redux';
+import {Row, Col, Card, Button} from 'react-bootstrap';
 
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
@@ -11,25 +12,28 @@ class Shop extends React.Component {
         return (
             <React.Fragment>
                 <Header tab="Shop"/>
-                <div class="row justify-content-around" style={{padding: 100}}>
+                <Row className="justify-content-around" style={{marginLeft: 10}}>
                     {this.props.shopItems.map((item, index) => {
                         return(
-                            <div class="col-sm-4" style={{marginBottom: 75}}>
-                                <div class="card" style={{width: "20rem", height: "36rem"}}>
-                                    <img class="card-img-top" src={item.image} alt={"image " + index}/>
-                                    <div class="card-body d-flex flex-column">
-                                        <div class="row justify-content-between" style={{marginLeft: 1, marginRight: 1}}>
-                                            <h5 class="card-title">{item.name}</h5>
-                                            <i>{"$\t" + item.price}</i>
-                                        </div>
-                                        <p class="card-text">{item.description}</p>
-                                        <button class="btn btn-primary mt-auto" onClick={() => this.props.addToCart(index)}>Add To Cart</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <Col xs={12} md={3} style={{paddingTop: 150}}>
+                                <Card style={{width: "20rem", height: "36rem"}}>
+                                    <Card.Body className="d-flex flex-column">
+                                        <Card.Img variant="top" src={item.image}/>
+                                        <Card.Title>
+                                            <Row className="justify-content-between" style={{marginLeft: 1, marginRight: 1, marginTop: 10}}>
+                                                <h5>{item.name}</h5>
+                                                <i>${item.price}</i>
+                                            </Row>
+                                        </Card.Title>
+                                        <Card.Text>{item.description}</Card.Text>
+                                        <Button className="mt-auto" onClick={() => this.props.addToCart(index)}>Add To Cart</Button>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
                         )
                     })}
-                </div>
+                </Row>
+                <div style={{height: 200}}/>
                 <Footer/>
             </React.Fragment>
         )
