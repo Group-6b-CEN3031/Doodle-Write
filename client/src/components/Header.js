@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from 'react-redux';
+import {Navbar, Nav, Button, Badge} from 'react-bootstrap';
 
 import Cart from "./Cart";
 
@@ -10,42 +11,25 @@ class Header extends React.Component {
             isCartOpen: false
         }
     }
-    
-    toggleCartVisibility = () => {
-        this.setState({
-            ...this.state,
-            isCartOpen: !this.state.isCartOpen
-        })
-    }
 
     render() {
         return (
             <React.Fragment>
-                <nav class="navbar sticky-top navbar-expand-lg navbar-light shadow bg-white rounded" style={{backgroundColor: "#ffffff"}}>
-                    <text class="navbar-brand">Doodle Write</text>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class={"nav-item " + (this.props.tab === "Home" ? "active" : "")}>
-                                <a class="nav-link" href="/">Home</a>
-                            </li>
-                            <li class={"nav-item " + (this.props.tab === "Testimonials" ? "active" : "")}>
-                                <a class="nav-link" href="/testimonials">Testimonials</a>
-                            </li>
-                            <li class={"nav-item " + (this.props.tab === "Contact Us" ? "active" : "")}>
-                                <a class="nav-link" href="/contact-us">Contact Us</a>
-                            </li>
-                            <li class={"nav-item " + (this.props.tab === "Shop" ? "active" : "")}>
-                                <a class="nav-link" href="/shop">Shop</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <button type="button" class="btn btn-primary" onClick={() => this.setState({...this.state, isCartOpen: !this.state.isCartOpen})}>
-                        Cart <span class="badge badge-light">{this.props.cartItems.length}</span>
-                    </button>
-                </nav>
+                <Navbar bg="light" expand="lg" sticky="top" className="shadow bg-white rounded">
+                    <Navbar.Brand href="/">Doodle Write</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link className={(this.props.tab === "Home" ? "active" : "")} href="/">Home</Nav.Link>
+                            <Nav.Link className={(this.props.tab === "Testimonials" ? "active" : "")} href="/testimonials">Testimonials</Nav.Link>
+                            <Nav.Link className={(this.props.tab === "Contact Us" ? "active" : "")} href="/contact-us">Contact Us</Nav.Link>
+                            <Nav.Link className={(this.props.tab === "Shop" ? "active" : "")} href="/shop">Shop</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                    <Button onClick={() => this.setState({...this.state, isCartOpen: !this.state.isCartOpen})}>
+                        Cart <Badge variant="light">{this.props.cartItems.length}</Badge>
+                    </Button>
+                </Navbar>
                 <Cart isCartOpen={this.state.isCartOpen}/>
             </React.Fragment>
         )

@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from 'react-redux';
+import {Container, Row, Col, Button} from 'react-bootstrap';
 import Sidebar from "react-sidebar";
 
 class Cart extends React.Component {
@@ -11,7 +12,7 @@ class Cart extends React.Component {
             pullRight={true}
             styles={sideBarStyle}
             sidebar= {                          
-              <div class="container">
+              <Container>
                 <div style={{height: 65}}/>
                 <div style={sideBarStyle.title}>My Cart</div>
                 {this.props.cartItems.length
@@ -19,16 +20,16 @@ class Cart extends React.Component {
                   <div>
                     {this.props.cartItems.map((item, cartItemsIndex) => {
                       return( 
-                        <div class="row justify-content-between" style={sideBarStyle.item}>
-                          <div class="col">
-                            <div class="row">
-                              <button class="btn btn-primary" onClick={() => this.props.removeItem(cartItemsIndex)}>X</button>
+                        <Row style={sideBarStyle.item}>
+                          <Col>
+                            <Row>
+                              <Button class="btn btn-primary" onClick={() => this.props.removeItem(cartItemsIndex)}>X</Button>
                               <div>
-                                <div class="row" style={{marginLeft: 15}}>{item.name}</div>
-                                <div class="row" style={{marginLeft: 15}}>{"Qty: " + item.quantity}</div>
+                                <Row style={{marginLeft: 15}}>{item.name}</Row>
+                                <Row style={{marginLeft: 15}}>{"Qty: " + item.quantity}</Row>
                               </div>
-                            </div>
-                          </div>
+                            </Row>
+                          </Col>
                           <select class="col form-control form-control-sm" style={{alignSelf: "center"}}>
                             {list.map((item, qnty) => {
                               return(
@@ -36,21 +37,21 @@ class Cart extends React.Component {
                               )
                             })}
                           </select>
-                          <div class="col" style={{alignSelf: "center"}}>
+                          <Col style={{alignSelf: "center"}}>
                             <t style={{fontSize: 15}}>${item.price}</t>
-                          </div>
-                        </div>
+                          </Col>
+                        </Row>
                       )})}
-                    <p style={sideBarStyle.total}>Total ({this.props.cartItems.length} Items): ${this.props.totalCost}</p>
-                    <p style={sideBarStyle.button}> 
-                      <button class="btn btn-primary">Checkout</button>
-                    </p>
+                    <div style={sideBarStyle.total}>Total ({this.props.cartItems.length} Item(s)): ${this.props.totalCost}</div>
+                    <div style={sideBarStyle.button}> 
+                      <Button class="btn btn-primary">Checkout</Button>
+                    </div>
                     <div style={{height: 65}}/>
                   </div>
                 :
                   <div style={{textAlign: "center", padding: 15}}>Your shopping cart is empty</div>
                 }
-              </div>
+              </Container>
             }
         />
     )
@@ -97,6 +98,7 @@ const sideBarStyle = {
     marginTop: 10
   },
   button: {
+    padding: 10,
     textAlign: "center", 
     fontSize: "20px"
   }

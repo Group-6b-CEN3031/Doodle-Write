@@ -2,7 +2,6 @@ import React from "react";
 import {Provider} from 'react-redux';
 import Store from './redux/store';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./pages/Home";
 import Testimonials from "./pages/Testimonials";
