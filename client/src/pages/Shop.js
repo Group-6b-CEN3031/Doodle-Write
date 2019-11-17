@@ -9,10 +9,10 @@ class Shop extends React.Component {
         return (
             <React.Fragment>
                 <Header tab="Shop"/>
-                <div class="row justify-content-around" style={{padding: 100}}>
+                <div class="row justify-content-around">
                     {this.props.shopItems.map((item, index) => {
                         return(
-                            <div class="col-sm-4" style={{marginBottom: 75}}>
+                            <div class="col-sm-3" style={{padding: 100}}>
                                 <div class="card" style={{width: "20rem", height: "36rem"}}>
                                     <img class="card-img-top" src={item.image} alt={"image " + index}/>
                                     <div class="card-body d-flex flex-column">
