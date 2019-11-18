@@ -16,7 +16,7 @@ class Shop extends React.Component {
         }
     }
 
-    componentDidMount = async () => {
+    componentWillMount = async () => {
         await api.displayAll().then (items => {
             this.setState ({
                 items: items.data.data,
