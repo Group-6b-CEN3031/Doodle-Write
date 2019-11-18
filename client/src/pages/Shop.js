@@ -25,13 +25,14 @@ class Shop extends React.Component {
     }
 
     render() { 
+        const {items} = this.state
         return (
             <React.Fragment>
                 <Header tab="Shop"/>
-                {this.props.shopItems.length
+                {this.state.items.length
                 ?
                     <Row className="justify-content-around" style={{marginLeft: 10}}>
-                        {this.props.shopItems.map((item, index) => {
+                        {items.map((item, index) => {
                             return(
                                 <Col xs={12} md={3} style={{paddingTop: 150}}>
                                     <Card style={{width: "20rem", height: "36rem"}}>
