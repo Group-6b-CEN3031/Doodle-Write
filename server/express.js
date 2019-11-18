@@ -1,6 +1,5 @@
 const path = require("path"),
     express = require("express"),
-    config = require("./config")
     mongoose = require("mongoose"),
     morgan = require("morgan"),
     bodyParser = require("body-parser"),
@@ -12,7 +11,7 @@ module.exports.init = () => {
         connect to database
         - reference README for db uri
     */
-    mongoose.connect(config.db.uri, {
+    mongoose.connect(process.env.DB_URI || require("./config").db.uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
