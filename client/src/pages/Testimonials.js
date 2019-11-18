@@ -11,7 +11,7 @@ class Testimonials extends React.Component {
         return (
             <React.Fragment>
                 <Header tab="Testimonials"/>
-                <Container className="text-center">
+                <Container className="text-center" style={{width: "100%"}}>
                 	<div className="row justify-content-center">
                 		<div style={styles.header}>
                 			<p style={styles.h1Text}>WHAT DO PEOPLE THINK?</p>

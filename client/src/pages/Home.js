@@ -20,7 +20,7 @@ class Home extends React.Component {
                 <div>
                     <img src={Hands} alt="Hands" style={styles.handsImg}/>
                 </div>
-                <Container className="text-center">
+                <Container className="text-center" stlye={{width: "100%"}}>
                     {/* 
                         Block One 
                     */}

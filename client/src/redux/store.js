@@ -9,12 +9,19 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch(action.type){
         case "LOAD_SHOP_FROM_DB":
-            return{
-                ...state,
-                shopItems: action.data
+            if(state.shopItems.length){
+                return{
+                    ...state
+                }
+            }
+            else{
+                return{
+                    ...state,
+                    shopItems: action.shopData
+                }
             }
         case "ADD_TO_CART":
-            if(state.cartItems.some(item => item.name === state.shopItems[action.shopItemIndex].name)){
+            if(state.cartItems.some(item => item.name === action.item.name)){
                 alert("This item is already in your shopping cart")
                 return{
                     ...state
@@ -23,8 +30,8 @@ const reducer = (state = initialState, action) => {
             else{
                 let temp1 = state.cartItems
                 temp1.push({
-                    name: state.shopItems[action.shopItemIndex].name,
-                    price: state.shopItems[action.shopItemIndex].price,
+                    name: action.item.name,
+                    price: action.item.price,
                     quantity: 1
                 })
 
@@ -36,7 +43,7 @@ const reducer = (state = initialState, action) => {
                 return{
                     ...state,
                     cartItems: temp1,
-                    totalCost: newTotal1
+                    totalCost: newTotal1.toFixed(2)
                 }
             }
         case "REMOVE_ITEM":
@@ -50,7 +57,7 @@ const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 cartItems: temp2,
-                totalCost: newTotal2
+                totalCost: newTotal2.toFixed(2)
             }
         case "CHANGE_QUANTITY":
             let temp3 = state.cartItems
