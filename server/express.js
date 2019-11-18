@@ -33,7 +33,7 @@ module.exports.init = () => {
 
     // add a router
     app.use(shopRouter);
-    app.listen (apiPort, () => console.log ('api listening on port ' + apiPort))
+    app.listen (apiPort, () => console.log ('Api listening on port ' + apiPort))
 
     if (process.env.NODE_ENV === "production") {
         // Serve any static files
