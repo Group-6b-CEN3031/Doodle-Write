@@ -1,8 +1,8 @@
 const router = require('express').Router();
-let ShopData = require('../models/shop-data.model');
+let Item = require('../models/shop.model.js');
 
 router.route('/').get((req, res) => {
-    ShopData.find()
+    Item.find()
         .then(data => res.status(200).json(data))
         .catch(err => console.log('Error: ' + err));
 })

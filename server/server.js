@@ -23,7 +23,7 @@ mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
 app.use(morgan("dev"));
 
 // add a router
-app.use('/shop-data', require('./routes/shop-data'));
+app.use('/shop/data', require('./routes/shop.router.js'));
 
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
