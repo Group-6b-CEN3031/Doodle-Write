@@ -8,6 +8,7 @@ class ContactUs extends React.Component {
         return (
             <React.Fragment>
                 <Header tab='Contact Us'/>
+                <div style={{height: 55}}/>
                 Contact Us
                 <Footer/>
             </React.Fragment>

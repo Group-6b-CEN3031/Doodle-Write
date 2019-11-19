@@ -30,6 +30,7 @@ class Shop extends React.Component {
         return (
             <React.Fragment>
                 <Header tab='Shop'/>
+                <div style={{height: 55}}/>
                 <Container style={{width: '100%'}}>
                     {this.state.items.length
                     ?

@@ -16,6 +16,7 @@ class Home extends React.Component {
         return (
             <React.Fragment>
                 <Header tab='Home'/>
+                <div style={{height: 55}}/>
                 <div style={styles.sloganBar}>PAINT, COLOR, DRAW, WRITE, AND LEARN !!!</div>
                 <div>
                     <img src={Hands} alt='Hands' style={styles.handsImg}/>

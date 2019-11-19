@@ -11,6 +11,7 @@ class Testimonials extends React.Component {
         return (
             <React.Fragment>
                 <Header tab='Testimonials'/>
+                <div style={{height: 55}}/>
                 <Container className='text-center' style={{width: '100%'}}>
                 	<div className='row justify-content-center'>
                 		<div style={styles.header}>
