@@ -7,7 +7,7 @@ class ContactUs extends React.Component {
     render() { 
         return (
             <React.Fragment>
-                <Header tab="Contact Us"/>
+                <Header tab='Contact Us'/>
                 Contact Us
                 <Footer/>
             </React.Fragment>

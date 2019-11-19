@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import {connect} from 'react-redux';
 import {Container, Row, Col, Button} from 'react-bootstrap';
-import Sidebar from "react-sidebar";
+import Sidebar from 'react-sidebar';
 
 class Cart extends React.Component {
   render() {
@@ -23,33 +23,33 @@ class Cart extends React.Component {
                         <Row style={sideBarStyle.item}>
                           <Col>
                             <Row>
-                              <Button class="btn btn-primary" onClick={() => this.props.removeItem(cartItemsIndex)}>X</Button>
+                              <Button class='btn btn-primary' onClick={() => this.props.removeItem(cartItemsIndex)}>X</Button>
                               <div>
                                 <Row style={{marginLeft: 15}}>{item.name}</Row>
-                                <Row style={{marginLeft: 15}}>{"Qty: " + item.quantity}</Row>
+                                <Row style={{marginLeft: 15}}>{'Qty: ' + item.quantity}</Row>
                               </div>
                             </Row>
                           </Col>
-                          <select class="col form-control form-control-sm" style={{alignSelf: "center"}}>
+                          <select class='col form-control form-control-sm' style={{alignSelf: 'center'}}>
                             {list.map((item, qnty) => {
                               return(
                                 <option>{qnty + 1}</option>
                               )
                             })}
                           </select>
-                          <Col style={{alignSelf: "center"}}>
+                          <Col style={{alignSelf: 'center'}}>
                             <t style={{fontSize: 15}}>${item.price}</t>
                           </Col>
                         </Row>
                       )})}
                     <div style={sideBarStyle.total}>Total ({this.props.cartItems.length} Item(s)): ${this.props.totalCost}</div>
                     <div style={sideBarStyle.button}> 
-                      <Button class="btn btn-primary">Checkout</Button>
+                      <Button class='btn btn-primary'>Checkout</Button>
                     </div>
                     <div style={{height: 65}}/>
                   </div>
                 :
-                  <div style={{textAlign: "center", padding: 15}}>Your shopping cart is empty</div>
+                  <div style={{textAlign: 'center', padding: 15}}>Your shopping cart is empty</div>
                 }
               </Container>
             }
@@ -77,30 +77,30 @@ export default connect(mapStateToProps, mapDispatchToProps)(Cart)
 
 const sideBarStyle = {
   sidebar: {
-    background: "white",
+    background: 'white',
     width: 300,
-    position: "fixed"
+    position: 'fixed'
   },
   title: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 25,
     padding: 10,
-    borderBottom:  "2px solid #E1E8EE",
+    borderBottom:  '2px solid #E1E8EE',
   },
   item: {
-    textAlign: "right",
+    textAlign: 'right',
     fontSize: 13,
     padding: 15,
-    borderBottom:  "2px solid #E1E8EE"
+    borderBottom:  '2px solid #E1E8EE'
   },
   total: {
-    textAlign: "center",
+    textAlign: 'center',
     marginTop: 10
   },
   button: {
     padding: 10,
-    textAlign: "center", 
-    fontSize: "20px"
+    textAlign: 'center', 
+    fontSize: '20px'
   }
 }
 

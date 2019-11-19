@@ -8,7 +8,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
-        case "LOAD_SHOP_FROM_DB":
+        case 'LOAD_SHOP_FROM_DB':
             if(state.shopItems.length){
                 return{
                     ...state
@@ -20,9 +20,9 @@ const reducer = (state = initialState, action) => {
                     shopItems: action.shopData
                 }
             }
-        case "ADD_TO_CART":
+        case 'ADD_TO_CART':
             if(state.cartItems.some(item => item.name === action.item.name)){
-                alert("This item is already in your shopping cart")
+                alert('This item is already in your shopping cart')
                 return{
                     ...state
                 }
@@ -46,7 +46,7 @@ const reducer = (state = initialState, action) => {
                     totalCost: newTotal1.toFixed(2)
                 }
             }
-        case "REMOVE_ITEM":
+        case 'REMOVE_ITEM':
             let temp2 = state.cartItems.filter((item, index) => index !== action.index)
 
             let newTotal2 = 0
@@ -59,7 +59,7 @@ const reducer = (state = initialState, action) => {
                 cartItems: temp2,
                 totalCost: newTotal2.toFixed(2)
             }
-        case "CHANGE_QUANTITY":
+        case 'CHANGE_QUANTITY':
             let temp3 = state.cartItems
             temp3.map((item, index) => index === action.cartItemsIndex ? item.quantity: action.qnty)
             return{
