@@ -9,6 +9,6 @@ const shopDataSchema = new Schema({
     description: { type: String, required: true }
 })
 
-const ShopData = mongoose.model('ShopData', shopDataSchema)
+const ShopData = mongoose.model('items', shopDataSchema)
 
 module.exports = ShopData;

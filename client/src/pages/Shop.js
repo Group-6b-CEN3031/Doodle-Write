@@ -17,7 +17,7 @@ class Shop extends React.Component {
     }
 
     componentWillMount() {
-        Axios.get('http://localhost:5000/shop-data')
+        Axios.get('/shop/data')
             .then(response => {
                 this.setState({items: response.data})
             })
