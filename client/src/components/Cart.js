@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Container, Row, Col, Button} from 'react-bootstrap';
+import {Container, Row, Col, Button, Form} from 'react-bootstrap';
 import Sidebar from 'react-sidebar';
 
 class Cart extends React.Component {
@@ -23,28 +23,32 @@ class Cart extends React.Component {
                         <Row style={sideBarStyle.item}>
                           <Col>
                             <Row>
-                              <Button class='btn btn-primary' onClick={() => this.props.removeItem(cartItemsIndex)}>X</Button>
+                              <Button onClick={() => this.props.removeItem(cartItemsIndex)}>X</Button>
                               <div>
                                 <Row style={{marginLeft: 15}}>{item.name}</Row>
                                 <Row style={{marginLeft: 15}}>{'Qty: ' + item.quantity}</Row>
                               </div>
                             </Row>
                           </Col>
-                          <select class='col form-control form-control-sm' style={{alignSelf: 'center'}}>
-                            {list.map((item, qnty) => {
-                              return(
-                                <option>{qnty + 1}</option>
-                              )
-                            })}
-                          </select>
+                          <Col>
+                            <Form.Group style={{alignSelf: 'center', height: 1}}>
+                              <Form.Control as="select">
+                                {list.map((item, qnty) => {
+                                  return(
+                                    <option>{qnty + 1}</option>
+                                  )
+                                })}
+                              </Form.Control>
+                            </Form.Group>
+                          </Col>  
                           <Col style={{alignSelf: 'center'}}>
-                            <t style={{fontSize: 15}}>${item.price}</t>
+                            <span style={{fontSize: 15}}>${item.price}</span>
                           </Col>
                         </Row>
                       )})}
                     <div style={sideBarStyle.total}>Total ({this.props.cartItems.length} Item(s)): ${this.props.totalCost}</div>
                     <div style={sideBarStyle.button}> 
-                      <Button class='btn btn-primary'>Checkout</Button>
+                      <Button>Checkout</Button>
                     </div>
                     <div style={{height: 65}}/>
                   </div>

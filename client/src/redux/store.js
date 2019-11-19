@@ -1,25 +1,15 @@
 import {createStore} from 'redux';
+import {loadState, saveState} from './sessionStorage.js';
+
+const persistedState = loadState();
 
 const initialState = {
-    shopItems: [],
     cartItems: [],
     totalCost: 0
 }
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
-        case 'LOAD_SHOP_FROM_DB':
-            if(state.shopItems.length){
-                return{
-                    ...state
-                }
-            }
-            else{
-                return{
-                    ...state,
-                    shopItems: action.shopData
-                }
-            }
         case 'ADD_TO_CART':
             if(state.cartItems.some(item => item.name === action.item.name)){
                 alert('This item is already in your shopping cart')
@@ -70,5 +60,8 @@ const reducer = (state = initialState, action) => {
             return state
     }
 }
+const store =  createStore(reducer, persistedState);
 
-export default createStore(reducer);
+store.subscribe(() => { saveState(store.getState())})
+
+export default store
