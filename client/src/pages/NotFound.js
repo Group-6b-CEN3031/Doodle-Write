@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import Header from "./../components/Header";
-import Footer from "./../components/Footer";
+import Header from './../components/Header';
+import Footer from './../components/Footer';
 
-import Frown from "./../assets/frown.png";
+import Frown from './../assets/frown.png';
 
 class NotFound extends React.Component {
     render() { 

@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import {connect} from 'react-redux';
 import {Container, Row, Col, Card, Button} from 'react-bootstrap';
-import api from "../api";
+import Axios from 'axios';
 
-import Header from "./../components/Header";
-import Footer from "./../components/Footer";
+import Header from './../components/Header';
+import Footer from './../components/Footer';
 
 
 
@@ -16,12 +16,14 @@ class Shop extends React.Component {
         }
     }
 
-    componentWillMount = async () => {
-        await api.displayAll().then (items => {
-            this.setState ({
-                items: items.data.data,
+    componentWillMount() {
+        Axios.get('http://localhost:5000/shop-data')
+            .then(response => {
+                this.setState({items: response.data})
             })
-        })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     render() { 

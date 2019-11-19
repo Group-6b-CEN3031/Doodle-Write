@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 
-import Header from "./../components/Header";
-import Footer from "./../components/Footer";
+import Header from './../components/Header';
+import Footer from './../components/Footer';
 
-import Hands from "./../assets/hands.jpeg";
-import AdultWithKids from "./../assets/adultWithKids.jpeg"
-import BlueGrip1 from "./../assets/blueGrip1.jpeg"
-import BlueGrip2 from "./../assets/blueGrip2.jpeg"
-import BlueGrip3 from "./../assets/blueGrip3.jpeg"
-import RedGrip from "./../assets/redGrip.jpeg"
+import Hands from './../assets/hands.jpeg';
+import AdultWithKids from './../assets/adultWithKids.jpeg';
+import BlueGrip1 from './../assets/blueGrip1.jpeg';
+import BlueGrip2 from './../assets/blueGrip2.jpeg';
+import BlueGrip3 from './../assets/blueGrip3.jpeg';
+import RedGrip from './../assets/redGrip.jpeg';
 
 class Home extends React.Component {
     render() { 

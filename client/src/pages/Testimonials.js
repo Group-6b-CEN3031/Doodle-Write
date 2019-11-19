@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 
-import Header from "./../components/Header";
-import Footer from "./../components/Footer";
+import Header from './../components/Header';
+import Footer from './../components/Footer';
 
-import quotes from "./../assets/quotes.jpg";
+import quotes from './../assets/quotes.jpg';
 
 class Testimonials extends React.Component {
     render() { 
