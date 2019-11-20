@@ -40,7 +40,7 @@ class Shop extends React.Component {
                                     <Col xs={12} md={4} style={{paddingTop: 75}}>
                                         <Card style={{width: '20rem', height: '36rem'}}>
                                             <Card.Body className='d-flex flex-column'>
-                                                <Card.Img variant='top' src={item.image}/>
+                                                <Card.Img variant='top' src={'.../../'} style={{width: 278, height: 300}}/>
                                                 <Card.Title>
                                                     <Row className='justify-content-between' style={{marginLeft: 1, marginRight: 1, marginTop: 10}}>
                                                         <h5>{item.name}</h5>
