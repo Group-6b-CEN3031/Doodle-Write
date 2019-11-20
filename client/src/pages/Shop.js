@@ -58,8 +58,8 @@ class Shop extends React.Component {
                     :
                         <div style={{textAlign: 'center', marginTop: 40}}>The shop is currently unavailable. Please check again later.</div>
                     }
-                    <div style={{height: 125}}/>
                 </Container>
+                <div style={{height: 125}}/>
                 <Footer/>
             </React.Fragment>
         )

@@ -9,8 +9,17 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
+
+    let generateNewTotal = (cart) => {
+        let newTotal = 0
+        cart.forEach(item => {
+            newTotal += item.price * item.quantity
+        })
+        return newTotal.toFixed(2);
+    }
+
     switch(action.type){
-        case 'ADD_TO_CART':
+        case 'ADD_TO_CART':{
             if(state.cartItems.some(item => item.name === action.item.name)){
                 alert('This item is already in your shopping cart')
                 return{
@@ -18,44 +27,45 @@ const reducer = (state = initialState, action) => {
                 }
             }
             else{
-                let temp1 = state.cartItems
-                temp1.push({
+                let temp = state.cartItems
+                temp.push({
                     name: action.item.name,
                     price: action.item.price,
                     quantity: 1
                 })
-
-                let newTotal1 = 0
-                temp1.forEach(item => {
-                    newTotal1 += item.price * item.quantity
-                })
-
                 return{
                     ...state,
-                    cartItems: temp1,
-                    totalCost: newTotal1.toFixed(2)
+                    cartItems: temp,
+                    totalCost: generateNewTotal(temp)
                 }
             }
-        case 'REMOVE_ITEM':
-            let temp2 = state.cartItems.filter((item, index) => index !== action.index)
-
-            let newTotal2 = 0
-            temp2.forEach(item => {
-                newTotal2 += item.price * item.quantity
-            })
-
+        }
+        case 'REMOVE_ITEM':{
+            let temp = state.cartItems.filter((item, index) => index !== action.index)
             return{
                 ...state,
-                cartItems: temp2,
-                totalCost: newTotal2.toFixed(2)
+                cartItems: temp,
+                totalCost: generateNewTotal(temp)
             }
-        case 'CHANGE_QUANTITY':
-            let temp3 = state.cartItems
-            temp3.map((item, index) => index === action.cartItemsIndex ? item.quantity: action.qnty)
+        }
+        case 'DECREMENT_QUANTITY':{
+            let temp = state.cartItems
+            temp[action.index].quantity -= 1
             return{
                 ...state,
-                cartItems: temp3
+                cartItems: temp,
+                totalCost: generateNewTotal(temp)
             }
+        }
+        case 'INCREMENT_QUANTITY':{
+            let temp = state.cartItems
+            temp[action.index].quantity += 1
+            return{
+                ...state,
+                cartItems: temp,
+                totalCost: generateNewTotal(temp)
+            }
+        }
         default:
             return state
     }
