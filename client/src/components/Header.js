@@ -16,11 +16,12 @@ class Header extends React.Component {
         return (
             <React.Fragment>
                 <Navbar bg='light' expand='lg' fixed='top' className='shadow bg-white rounded'>
-                    <Navbar.Brand href='/'>Doodle Write</Navbar.Brand>
+                    <Navbar.Brand href='/'>DoodleWrite</Navbar.Brand>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse id='basic-navbar-nav'>
                         <Nav className='mr-auto'>
                             <Nav.Link className={(this.props.tab === 'Home' ? 'active' : '')} href='/'>Home</Nav.Link>
+                            <Nav.Link className={(this.props.tab === 'Media' ? 'active' : '')} href='/media'>Media</Nav.Link>
                             <Nav.Link className={(this.props.tab === 'Testimonials' ? 'active' : '')} href='/testimonials'>Testimonials</Nav.Link>
                             <Nav.Link className={(this.props.tab === 'Contact Us' ? 'active' : '')} href='/contact-us'>Contact Us</Nav.Link>
                             <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
