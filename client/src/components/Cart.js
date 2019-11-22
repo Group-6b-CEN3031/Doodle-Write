@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import Sidebar from 'react-sidebar';
 
+import Stripe from './Stripe'
+
 class Cart extends React.Component {
   render() {
     return (    
@@ -41,7 +43,7 @@ class Cart extends React.Component {
                     </Container>
                     <div style={sideBarStyle.total}>Total ({this.props.cartItems.length} Item(s)): ${this.props.totalCost}</div>
                     <div style={sideBarStyle.checkoutButton}> 
-                      <Button>Checkout</Button>
+                      <Stripe/>
                     </div>
                     <div style={{height: 65}}/>
                   </React.Fragment>

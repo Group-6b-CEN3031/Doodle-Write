@@ -2,8 +2,8 @@ const path = require('path'),
     express = require('express'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
-    bodyParser = require('body-parser');
-
+    bodyParser = require('body-parser'),
+    stripe = require('stripe')(require('./config').stripe.secret);
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -18,6 +18,23 @@ mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
     useCreateIndex: true,
     useFindAndModify: false
 });
+
+// connect to stripe
+(async () => {
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: [{
+        name: 'T-shirt',
+        description: 'Comfortable cotton t-shirt',
+        images: ['https://example.com/t-shirt.png'],
+        amount: 500,
+        currency: 'usd',
+        quantity: 1,
+        }],
+        success_url: 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'https://example.com/cancel',
+    });
+})();
 
 // enable request logging for development debugging
 app.use(morgan("dev"));
