@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import Sidebar from 'react-sidebar';
 
-import Stripe from './Stripe'
-
 class Cart extends React.Component {
   render() {
     return (    
@@ -41,9 +39,10 @@ class Cart extends React.Component {
                         )
                       })}
                     </Container>
-                    <div style={sideBarStyle.total}>Total ({this.props.cartItems.length} Item(s)): ${this.props.totalCost}</div>
+                    <div style={{textAlign: 'center', fontSize: 10, marginTop: 5}}>Shipping: $4.99</div>
+                    <div style={{textAlign: 'center'}}>Total ({this.props.cartItems.length} Item(s)): ${this.props.totalCost}</div>
                     <div style={sideBarStyle.checkoutButton}> 
-                      <Stripe/>
+                      <Button>Checkout</Button>
                     </div>
                     <div style={{height: 65}}/>
                   </React.Fragment>
@@ -93,10 +92,6 @@ const sideBarStyle = {
     paddingBottom: 10,
     fontSize: 13,
     borderBottom:  '2px solid #E1E8EE',
-  },
-  total: {
-    textAlign: 'center',
-    paddingTop: 10
   },
   checkoutButton: {
     padding: 10,

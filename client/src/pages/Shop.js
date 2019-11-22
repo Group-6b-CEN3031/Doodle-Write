@@ -6,8 +6,6 @@ import Axios from 'axios';
 import Header from './../components/Header';
 import Footer from './../components/Footer';
 
-import Checkout from './Checkout'
-
 class Shop extends React.Component {
     constructor(props) {
         super(props);

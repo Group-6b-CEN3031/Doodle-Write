@@ -15,7 +15,7 @@ const reducer = (state = initialState, action) => {
         cart.forEach(item => {
             newTotal += item.price * item.quantity
         })
-        return newTotal.toFixed(2);
+        return (newTotal + 4.99).toFixed(2);
     }
 
     switch(action.type){
