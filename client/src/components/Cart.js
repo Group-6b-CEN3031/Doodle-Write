@@ -14,8 +14,8 @@ class Cart extends React.Component {
       items: JSON.stringify(this.props.cartItems.map(item => item.name + ' x ' + item.quantity))
     })
     if(session.status === 200){
-      this.props.emptyCart()
       this.props.history.push('/')
+      this.props.emptyCart()
     }
     else{
       alert('An error has occured. The payment was not processed. Please try again later')
