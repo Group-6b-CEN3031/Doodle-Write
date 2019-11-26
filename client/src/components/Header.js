@@ -16,7 +16,7 @@ class Header extends React.Component {
         return (
             <React.Fragment>
                 <Navbar bg='light' expand='lg' fixed='top' className='shadow bg-white rounded'>
-                    <Navbar.Brand href='/'>Doodle Write</Navbar.Brand>
+                    <Navbar.Brand href='/'>Doodlewrite</Navbar.Brand>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse id='basic-navbar-nav'>
                         <Nav className='mr-auto'>

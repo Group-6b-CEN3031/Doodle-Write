@@ -17,6 +17,9 @@ class Cart extends React.Component {
       this.props.emptyCart()
       this.props.history.push('/')
     }
+    else{
+      alert('An error has occured. The payment was not processed. Please try again later')
+    }
   }
 
   render() {

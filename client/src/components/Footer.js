@@ -22,7 +22,7 @@ class Footer extends React.Component {
                         </Row>
                     </Container>
                 </Nav>
-                © 2019 Doodle Write Co.
+                © 2019 Doodlewrite Co.
             </Navbar>
         )
     }
