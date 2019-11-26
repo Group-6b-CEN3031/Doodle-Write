@@ -1,6 +1,6 @@
 const router = require('express').Router(),
     uuid = require('uuid/v4');
-    stripe = require('stripe')(process.env.STRIPE_SECRET_KEY || require('../config').stripe.secret);
+    stripe = require('stripe')(process.env.STRIPE_URI || require('../config').stripe.uri);
 
 router.route('/').post( async (req, res) => {
     try{
