@@ -2,6 +2,7 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import Store from './redux/store';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop'
 
 import Home from './pages/Home';
 import Testimonials from './pages/Testimonials';
@@ -14,6 +15,7 @@ class App extends React.Component {
     return (
       <Provider store={Store}>
         <Router>
+          <ScrollToTop/>
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/testimonials' component={Testimonials} />

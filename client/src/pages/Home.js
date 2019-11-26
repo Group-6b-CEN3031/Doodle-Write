@@ -57,7 +57,7 @@ class Home extends React.Component {
                     */}
                     <Row>
                         <Col className='align-items-center'>
-                                <img src={BlueGrip1} alt='Blue grip 1' class='shadow-lg' style={{width: '40%'}}/>
+                                <img src={BlueGrip1} alt='Blue grip 1' className='shadow-lg' style={{width: '40%'}}/>
                         </Col>
                         <Col className='d-flex flex-column'>
                             <div style={styles.h2Text}>Pre-Writing Doodling Makes it Easier to Learn How to Write Letters and Numbers</div>

@@ -1,9 +1,24 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {Container, Row, Col, Button} from 'react-bootstrap';
+import Axios from 'axios';
 import Sidebar from 'react-sidebar';
+import StripeCheckout from 'react-stripe-checkout';
 
 class Cart extends React.Component {
+  handleToken = async (token) => {
+    let session = await Axios.post('/shop/checkout', {
+      token: token, 
+      totalCost: Math.round(this.props.totalCost * 100), 
+      items: JSON.stringify(this.props.cartItems.map(item => item.name + ' x ' + item.quantity))
+    })
+    if(session.status === 200){
+      this.props.emptyCart()
+      this.props.history.push('/')
+    }
+  }
+
   render() {
     return (    
         <Sidebar
@@ -41,9 +56,21 @@ class Cart extends React.Component {
                     </Container>
                     <div style={{textAlign: 'center', fontSize: 10, marginTop: 5}}>Shipping: $4.99</div>
                     <div style={{textAlign: 'center'}}>Total ({this.props.cartItems.length} Item(s)): ${this.props.totalCost}</div>
-                    <div style={sideBarStyle.checkoutButton}> 
-                      <Button>Checkout</Button>
-                    </div>
+                    <div style={sideBarStyle.checkoutButton}>
+                      <StripeCheckout
+                        name='Order Form'
+                        amount={Math.round(this.props.totalCost * 100)}
+                        currency='USD'
+                        stripeKey='pk_test_GRBeSKSft03lpoYFBrCIDoEX00ZNrPirhG'
+                        shippingAddress
+                        billingAddress
+                        token={this.handleToken}
+                        opened={this.onOpened}
+                        closed={this.onClosed}
+                      >
+                        <Button>Checkout</Button>
+                      </StripeCheckout>
+                    </div>  
                     <div style={{height: 65}}/>
                   </React.Fragment>
                 :
@@ -68,11 +95,12 @@ function mapDispatchToProps(dispatch){
   return{
       removeItem: (index) => dispatch({type: 'REMOVE_ITEM', index}),
       decrementQuantity: (index) => dispatch({type: 'DECREMENT_QUANTITY', index}),
-      incrementQuantity: (index) => dispatch({type: 'INCREMENT_QUANTITY', index})
+      incrementQuantity: (index) => dispatch({type: 'INCREMENT_QUANTITY', index}),
+      emptyCart: () => dispatch({type: 'EMPTY_CART'})
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cart))
 
 const sideBarStyle = {
   sidebar: {

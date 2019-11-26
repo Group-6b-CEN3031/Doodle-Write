@@ -66,12 +66,16 @@ const reducer = (state = initialState, action) => {
                 totalCost: generateNewTotal(temp)
             }
         }
+        case 'EMPTY_CART':{
+            console.log('empty')
+            return initialState
+        }
         default:
             return state
     }
 }
 const store =  createStore(reducer, persistedState);
 
-store.subscribe(() => { saveState(store.getState())})
+store.subscribe(() => {saveState(store.getState())})
 
 export default store

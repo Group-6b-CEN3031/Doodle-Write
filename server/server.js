@@ -23,7 +23,7 @@ app.use(morgan("dev"));
 
 // add a router
 app.use('/shop/data', require('./routes/shop.router.js'));
-app.use('/shop/order', require('./routes/order.router'));
+app.use('/shop/checkout', require('./routes/checkout.router'));
 
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
