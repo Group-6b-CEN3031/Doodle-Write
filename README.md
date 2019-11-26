@@ -25,7 +25,7 @@
 *(gif/vid here demonstrating website)*
 
 ### Update Database Demonstration
-*(gif/vid here demonstrating website)*
+*(gif/vid here demonstrating database modification)*
 
 # MERN Template
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
