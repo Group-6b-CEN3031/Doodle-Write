@@ -1,5 +1,6 @@
 # Doodlewrite
 [Deployed web application](https://doodlewriteonline.herokuapp.com)
+
 [References](https://github.com/Group-6b-CEN3031/Doodlewrite/network/dependencies)
 
 ### Implemented Features
