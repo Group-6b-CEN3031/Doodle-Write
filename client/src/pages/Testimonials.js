@@ -1,6 +1,6 @@
 import React from "react";
-import {Container, Row, Col} from 'react-bootstrap';
-import api from "../api";
+import {Container, Row, Col, Card, Button} from 'react-bootstrap';
+import Axios from "axios";
 
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
@@ -11,55 +11,70 @@ class Testimonials extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            testimonal: ["This is a testimonial"],
+            testimonial: [],
         }
     }
 
     componentWillMount = async() => {
-        await api.displayAll().then (testimonal => {
-            this.state ({
-                testimonal: testimonal.data.data,
+        Axios.get('/testimonial/data')
+            .then(response => {
+                this.setState({testimonial: response.data})
             })
-        })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
-    displayTestimonials(testimonial){
-        if (this.state.testimonial.length === 0){
+    displayTestimonials(){
+        if (this.state.testimonial.length == 0){
             return (
-            <ul className="text-center" style={{color: "#5e5e5e"}}>
-                <li>No testimnoials currently stored.</li>
-            </ul>
+            <p className="text-center" style={{color: "#5e5e5e"}}>
+                No testimnoials currently stored.
+            </p>
             )
         }
         return (
-        <ul className="text-left" style={{color: "#5e5e5e"}}>
-            <li>{testimonial.content} " -" {testimonial.name} " " {testimonial.credential}</li>
-            <li>"I was pleasantly surprised to see how it captured and kept my students attention." -Theresa P. Special Education Teacher</li>
-            <li>"My younger art students were able to participate more confidently as they accomplished tasks with the support of the tool that were challenging without it. It brought an instant sense of satisfaction of the kids." -James M. Art Teacher</li>
-            <li>"I loved the excitement that showed on my class's face as I showed them what we were using in class that day." -Sharon T. Kindergarten Teacher</li>
-            <li>"I found myself using it after my client had left for my boardwork. It was comfortable to use and fun!" -Douglene J. Occupational Therapist</li>
-        </ul>
+        <Row className="justify-content-around">
+            {this.state.testimonial.map((test, index) => {
+                return(
+                    <Col xs={12} md={4} style={{paddingTop: 75}}>
+                        <Card style={{width: "20rem", height: "36rem"}}>
+                            <Card.Body className="d-flex flex-column">
+                                <Card.Title>
+                                    <Row className="justify-content-between" style={{marginLeft: 1, marginRight: 1, marginTop: 10}}>
+                                        <h5>{test.name}</h5>
+                                        <h5>{test.credentials}</h5>
+                                    </Row>
+                                </Card.Title>
+                                <Card.text>
+                                    {test.content}
+                                </Card.text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                )}
+            )}
+        </Row>
         )
     }
 
     render() {
-        console.log(this.state.testimonial); 
         return (
             <React.Fragment>
                 <Header tab="Testimonials"/>
                 <Container className="text-center" style={{width: "100%"}}>
-                	<div className="row justify-content-center">
-                		<div style={styles.header}>
-                			<p style={styles.h1Text}>WHAT DO PEOPLE THINK?</p>
-                		</div>
-                	</div>
+            	   <div className="row justify-content-center">
+            		  <div style={styles.header}>
+            		      <p style={styles.h1Text}>WHAT DO PEOPLE THINK?</p>
+            		  </div>
+            	   </div>
                     <Row>
                         <Col className="align-items-center">
                             <img src={quotes} alt="quotation marks" class="shadow-lg" style={{width: "100%"}}/>
                         </Col>
                         <Col className="d-flex flex-column">
                             <div style={{...styles.grayLine, width: 220}}/>
-                            {this.displayTestimonials(this.state.testimonial)}
+                            {this.displayTestimonials()}
                         </Col>
                     </Row>
                 </Container>
