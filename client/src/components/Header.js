@@ -23,9 +23,9 @@ class Header extends React.Component {
                     {window.location.pathname === '/'
                     ?
                         <Nav className='mr-auto'>
-                            <Scroll.Link to='Home' smooth={true} offset={-200}><Nav.Link>Home</Nav.Link></Scroll.Link>
-                            <Scroll.Link to='Media' smooth={true} offset={-200}><Nav.Link >Media</Nav.Link></Scroll.Link>
-                            <Scroll.Link to='Testimonials' smooth={true} offset={-200}><Nav.Link >Testimonials</Nav.Link></Scroll.Link>
+                            <Scroll.Link to='Home' smooth={true} offset={-250}><Nav.Link>Home</Nav.Link></Scroll.Link>
+                            <Scroll.Link to='Media' smooth={true} offset={-250}><Nav.Link >Media</Nav.Link></Scroll.Link>
+                            <Scroll.Link to='Testimonials' smooth={true} offset={-250}><Nav.Link >Testimonials</Nav.Link></Scroll.Link>
                             <Scroll.Link to='Contact Us' smooth={true} offset={-150}><Nav.Link>Contact Us</Nav.Link></Scroll.Link>
                             <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
                         </Nav>
