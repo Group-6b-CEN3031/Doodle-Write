@@ -67,7 +67,6 @@ const reducer = (state = initialState, action) => {
             }
         }
         case 'EMPTY_CART':{
-            console.log('empty')
             return initialState
         }
         default:

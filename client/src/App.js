@@ -4,9 +4,7 @@ import Store from './redux/store';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop'
 
-import Home from './pages/Home';
-import Testimonials from './pages/Testimonials';
-import ContactUs from './pages/ContactUs';
+import LandingPage from './pages/LandingPage';
 import Shop from './pages/Shop';
 import NotFound from './pages/NotFound';
 
@@ -17,9 +15,7 @@ class App extends React.Component {
         <Router>
           <ScrollToTop/>
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/testimonials' component={Testimonials} />
-            <Route exact path='/contact-us' component={ContactUs} />
+            <Route exact path='/' component={LandingPage} />
             <Route exact path='/shop' component={Shop} />
             <Route component={NotFound} />
           </Switch>

@@ -1,15 +1,19 @@
-import {useEffect} from 'react';
+import {useEffect, useCallback} from 'react';
 import {withRouter} from 'react-router-dom';
 
 function ScrollToTop({ history }) {
-  useEffect(() => {
+  const innerFunction = useCallback(() => {
     const unlisten = history.listen(() => {
       window.scrollTo(0, 0);
     });
     return () => {
       unlisten();
     }
-  }, []);
+  }, [history]);
+
+  useEffect(() => {
+      innerFunction();
+  }, [innerFunction]);
 
   return (null);
 }

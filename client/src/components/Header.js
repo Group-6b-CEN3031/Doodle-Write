@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Navbar, Nav, Button, Badge} from 'react-bootstrap';
+import Scroll from 'react-scroll';
 
 import Cart from './Cart';
 
@@ -19,18 +20,28 @@ class Header extends React.Component {
                     <Navbar.Brand href='/'>Doodlewrite</Navbar.Brand>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse id='basic-navbar-nav'>
+                    {window.location.pathname === '/'
+                    ?
                         <Nav className='mr-auto'>
-                            <Nav.Link className={(this.props.tab === 'Home' ? 'active' : '')} href='/'>Home</Nav.Link>
-                            <Nav.Link className={(this.props.tab === 'Testimonials' ? 'active' : '')} href='/testimonials'>Testimonials</Nav.Link>
-                            <Nav.Link className={(this.props.tab === 'Contact Us' ? 'active' : '')} href='/contact-us'>Contact Us</Nav.Link>
+                            <Scroll.Link to='Home' smooth={true} offset={-200}><Nav.Link>Home</Nav.Link></Scroll.Link>
+                            <Scroll.Link to='Media' smooth={true} offset={-200}><Nav.Link >Media</Nav.Link></Scroll.Link>
+                            <Scroll.Link to='Testimonials' smooth={true} offset={-200}><Nav.Link >Testimonials</Nav.Link></Scroll.Link>
+                            <Scroll.Link to='Contact Us' smooth={true} offset={-150}><Nav.Link>Contact Us</Nav.Link></Scroll.Link>
                             <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
                         </Nav>
+                    :
+                        <Nav className='mr-auto'>
+                            <Nav.Link href='/'>Home</Nav.Link>
+                            <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
+                        </Nav>    
+                    }
                     </Navbar.Collapse>
                     <Button onClick={() => this.setState({...this.state, isCartOpen: !this.state.isCartOpen})}>
                         Cart <Badge variant='light'>{this.props.cartItems.length}</Badge>
                     </Button>
                 </Navbar>
                 <Cart isCartOpen={this.state.isCartOpen}/>
+                <div style={{height: 55}}/>
             </React.Fragment>
         )
     }
@@ -42,12 +53,6 @@ function mapStateToProps(state){
       cartItems: state.cartItems,
       totalCost: state.totalCost
     }
-  }
-  
-  function mapDispatchToProps(dispatch){
-    return{
+}
 
-    }
-  }
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps)(Header)

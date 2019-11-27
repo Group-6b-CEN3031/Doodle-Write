@@ -27,7 +27,7 @@ class Cart extends React.Component {
         <Sidebar
             open={this.props.isCartOpen}
             pullRight={true}
-            styles={sideBarStyle}
+            styles={{sidebar: {position: 'fixed', background: 'white', width: 300} }}
             sidebar= { 
               <React.Fragment>                    
                 <div style={{height: 65}}/>
