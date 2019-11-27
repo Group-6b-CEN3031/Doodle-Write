@@ -11,7 +11,7 @@ class Testimonials extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            testimonal: [],
+            testimonal: ["This is a testimonial"],
         }
     }
 
@@ -24,7 +24,7 @@ class Testimonials extends React.Component {
     }
 
     displayTestimonials(testimonial){
-        if (testimonial.length === 0){
+        if (this.state.testimonial.length === 0){
             return (
             <ul className="text-center" style={{color: "#5e5e5e"}}>
                 <li>No testimnoials currently stored.</li>
@@ -42,7 +42,8 @@ class Testimonials extends React.Component {
         )
     }
 
-    render() { 
+    render() {
+        console.log(this.state.testimonial); 
         return (
             <React.Fragment>
                 <Header tab="Testimonials"/>
@@ -58,7 +59,7 @@ class Testimonials extends React.Component {
                         </Col>
                         <Col className="d-flex flex-column">
                             <div style={{...styles.grayLine, width: 220}}/>
-                            <displayTestimonials testimonial={this.state.testimonial} /> 
+                            {this.displayTestimonials(this.state.testimonial)}
                         </Col>
                     </Row>
                 </Container>
