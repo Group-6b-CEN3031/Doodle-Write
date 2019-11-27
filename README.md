@@ -4,18 +4,12 @@
 [References](https://github.com/Group-6b-CEN3031/Doodlewrite/network/dependencies)
 
 ### Implemented Features
-- #### `Home Page`
-	- A page with general information about the clients product.
-- #### `Media Page`
-	- ?
-- #### `Testimonial Page`
-	- A page featuring testimonials received from  previous customers. Information retrieved from database.
-- #### `Contact Us Page`
-	- A page that allows a user to contact the client. Contains text fields and uses an API to send an email to containing the provided information to the client.
+- #### `Landing Page`
+	- A page with general information about the clients product. Includes the following sectons: Media, Testimonials, and Contact Us.
 - #### `Shop Page`
 	- A page the presents the clients product in a card format. Information retrieved from database.
 - #### `Header`
-	- A page header that includes links to other pages within the website and the cart component.
+	- A page header that scrolls to different portions of the home page or redirects to the shop.
 - #### `Foot`
 	- A page footer that includes social media links.
 - #### `Cart`
