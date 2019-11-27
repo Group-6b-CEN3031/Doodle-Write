@@ -29,7 +29,7 @@ class Cart extends React.Component {
             pullRight={true}
             styles={{sidebar: {position: 'fixed', background: 'white', width: 300} }}
             sidebar= { 
-              <React.Fragment>                    
+              <div>                    
                 <div style={{height: 65}}/>
                 <div style={sideBarStyle.title}>My Cart</div>
                 {this.props.cartItems.length
@@ -79,7 +79,7 @@ class Cart extends React.Component {
                 :
                   <div style={{textAlign: 'center', padding: 15}}>Your shopping cart is empty</div>
                 }
-              </React.Fragment>     
+              </div>     
             }
         />
     )

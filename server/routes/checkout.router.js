@@ -31,7 +31,6 @@ router.route('/').post( async (req, res) => {
                 idempotency_key: idempotencyKey
             }
         )
-        res.redirect('/')
     }
     catch(error){
         console.error('Error: ' + error)
