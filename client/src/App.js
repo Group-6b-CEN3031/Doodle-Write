@@ -8,6 +8,7 @@ import LandingPage from './pages/LandingPage';
 import Shop from './pages/Shop';
 import NotFound from './pages/NotFound';
 
+
 class App extends React.Component {
   render() { 
     return (
