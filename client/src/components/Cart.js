@@ -16,8 +16,8 @@ class Cart extends React.Component {
   }
   
   refreshPage = () => {
-    this.props.history.push('/')
     this.props.emptyCart()
+    this.props.history.push('/')
   }
 
   checkout = (token) => {
