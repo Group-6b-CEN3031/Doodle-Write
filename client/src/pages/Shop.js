@@ -14,15 +14,15 @@ class Shop extends React.Component {
         }
     }
 
-    // componentWillMount() {
-    //     Axios.get('/shop/data')
-    //         .then(response => {
-    //             this.setState({items: response.data})
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //         })
-    // }
+    componentWillMount() {
+        Axios.get('/shop/data')
+            .then(response => {
+                this.setState({items: response.data})
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
 
     render() { 
         return (
