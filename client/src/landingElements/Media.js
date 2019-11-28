@@ -9,7 +9,7 @@ class Media extends React.Component {
     render() { 
         return (
             <div id='Media' style={{backgroundColor: 'white', textAlign: 'center'}}>
-                <Carousel style={{padding: 50, width:750, display:"inline-block"}}>
+                <Carousel style={{marginBottom: '30px', marginTop: '30px', padding:'10px', width:750, display:"inline-block"}}>
                     <Carousel.Item>
                         <img src={redGrip} alt="First slide" className="d-block w-100" />
                     </Carousel.Item>

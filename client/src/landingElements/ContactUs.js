@@ -46,23 +46,24 @@ class ContactUs extends React.Component {
 
     render() {
         return (
-            <div id='Contact Us' style={{backgroundColor: 'white'}}>
-                <div style={{padding: 40, textAlign: 'center'}}>Contact Us</div>
-                <Form style={{paddingBottom: 50, paddingLeft: 500, paddingRight: 500}}>
-                    <Form.Group controlId="formGroupName" style={{width: '20%'}}>
-                        <Form.Control size="sm" type="text" placeholder="Enter name" name='name' value={this.state.name} onChange={this.handleChange}/>
+            <div id='Contact Us' style={{backgroundColor: '#8fb2d0'}}>
+                
+                <Form style={{paddingTop:50,paddingBottom: 50, paddingLeft: 400, paddingRight: 400}}>
+                <div style={{padding: 40, textAlign: 'center', fontWeight:'600', fontSize:'large'}}>If you have a general question, please fill out this form and send us a message!</div>
+                    <Form.Group controlId="formGroupName" style={{width: '48%', marginRight:'4%', display:"inline-block"}}>
+                        <Form.Control  type="text" placeholder="Name" name='name' value={this.state.name} onChange={this.handleChange}/>
                     </Form.Group>
-                    <Form.Group controlId="formGroupEmail" style={{width: '20%'}}>
-                        <Form.Control size="sm" type="email" placeholder="Enter email" name='email' value={this.state.email} onChange={this.handleChange}/>
+                    <Form.Group controlId="formGroupEmail" style={{width: '48%',display:"inline-block"}}>
+                        <Form.Control  type="email" placeholder="Email" name='email' value={this.state.email} onChange={this.handleChange}/>
                     </Form.Group>
-                    <Form.Group controlId="formGroupSubject" style={{width: '20%'}}>
-                        <Form.Control size="sm" type="text" placeholder="Enter subject" name='subject' value={this.state.subject} onChange={this.handleChange}/>
+                    <Form.Group controlId="formGroupSubject" style={{width: '100%'}}>
+                        <Form.Control  type="text" placeholder="Subject" name='subject' value={this.state.subject} onChange={this.handleChange}/>
                     </Form.Group>
-                    <Form.Group controlId="formGroupBody">
-                        <Form.Control size="sm" as="textarea" rows='8' placeholder="Enter body" name='body' value={this.state.body} onChange={this.handleChange}/>
+                    <Form.Group controlId="formGroupBody" >
+                        <Form.Control style={{minHeight:'250px'}} as="textarea" rows='8' placeholder="Message" name='body' value={this.state.body} onChange={this.handleChange}/>
                     </Form.Group>
-                    <div style={{textAlign: 'center'}}>
-                        <Button onClick={() => this.sendEmail()}>Send</Button>
+                    <div style={{textAlign: 'right'}}>
+                        <Button onClick={() => this.sendEmail()} style={{width:'20%'}}>Send</Button>
                     </div>
                 </Form>
             </div>
