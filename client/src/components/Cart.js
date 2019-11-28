@@ -7,17 +7,17 @@ import Sidebar from 'react-sidebar';
 import StripeCheckout from 'react-stripe-checkout';
 
 class Cart extends React.Component {
-  refreshPage = () => {
-    this.props.history.push('/')
-    this.props.emptyCart()
-  }
-
   handleToken = async (token) => {
     await Axios.post('/shop/checkout', {
       token: token, 
       totalCost: Math.round(this.props.totalCost * 100), 
       items: JSON.stringify(this.props.cartItems.map(item => item.name + ' x ' + item.quantity))
     })
+  }
+  
+  refreshPage = () => {
+    this.props.history.push('/')
+    this.props.emptyCart()
   }
 
   checkout = (token) => {
