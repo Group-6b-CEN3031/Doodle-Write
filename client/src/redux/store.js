@@ -1,74 +1,80 @@
 import {createStore} from 'redux';
+import {loadState, saveState} from './sessionStorage.js';
+
+const persistedState = loadState();
 
 const initialState = {
-    shopItems: [],
     cartItems: [],
     totalCost: 0
 }
 
 const reducer = (state = initialState, action) => {
+
+    let generateNewTotal = (cart) => {
+        let newTotal = 0
+        cart.forEach(item => {
+            newTotal += item.price * item.quantity
+        })
+        return (newTotal + 4.99).toFixed(2);
+    }
+
     switch(action.type){
-        case "LOAD_SHOP_FROM_DB":
-            if(state.shopItems.length){
-                return{
-                    ...state
-                }
-            }
-            else{
-                return{
-                    ...state,
-                    shopItems: action.shopData
-                }
-            }
-        case "ADD_TO_CART":
+        case 'ADD_TO_CART':{
             if(state.cartItems.some(item => item.name === action.item.name)){
-                alert("This item is already in your shopping cart")
+                alert('This item is already in your shopping cart')
                 return{
                     ...state
                 }
             }
             else{
-                let temp1 = state.cartItems
-                temp1.push({
+                let temp = state.cartItems
+                temp.push({
                     name: action.item.name,
                     price: action.item.price,
                     quantity: 1
                 })
-
-                let newTotal1 = 0
-                temp1.forEach(item => {
-                    newTotal1 += item.price * item.quantity
-                })
-
                 return{
                     ...state,
-                    cartItems: temp1,
-                    totalCost: newTotal1.toFixed(2)
+                    cartItems: temp,
+                    totalCost: generateNewTotal(temp)
                 }
             }
-        case "REMOVE_ITEM":
-            let temp2 = state.cartItems.filter((item, index) => index !== action.index)
-
-            let newTotal2 = 0
-            temp2.forEach(item => {
-                newTotal2 += item.price * item.quantity
-            })
-
+        }
+        case 'REMOVE_ITEM':{
+            let temp = state.cartItems.filter((item, index) => index !== action.index)
             return{
                 ...state,
-                cartItems: temp2,
-                totalCost: newTotal2.toFixed(2)
+                cartItems: temp,
+                totalCost: generateNewTotal(temp)
             }
-        case "CHANGE_QUANTITY":
-            let temp3 = state.cartItems
-            temp3.map((item, index) => index === action.cartItemsIndex ? item.quantity: action.qnty)
+        }
+        case 'DECREMENT_QUANTITY':{
+            let temp = state.cartItems
+            temp[action.index].quantity -= 1
             return{
                 ...state,
-                cartItems: temp3
+                cartItems: temp,
+                totalCost: generateNewTotal(temp)
             }
+        }
+        case 'INCREMENT_QUANTITY':{
+            let temp = state.cartItems
+            temp[action.index].quantity += 1
+            return{
+                ...state,
+                cartItems: temp,
+                totalCost: generateNewTotal(temp)
+            }
+        }
+        case 'EMPTY_CART':{
+            return initialState
+        }
         default:
             return state
     }
 }
+const store =  createStore(reducer, persistedState);
 
-export default createStore(reducer, initialState);
+store.subscribe(() => {saveState(store.getState())})
+
+export default store

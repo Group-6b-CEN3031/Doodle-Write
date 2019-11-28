@@ -1,7 +1,31 @@
+# Doodlewrite
+[Deployed web application](https://doodlewriteonline.herokuapp.com)
+
+[References](https://github.com/Group-6b-CEN3031/Doodlewrite/network/dependencies)
+
+### Implemented Features
+- #### `Landing Page`
+	- A page with general information about the clients product. Includes the following sectons: Media, Testimonials, and Contact Us.
+- #### `Shop Page`
+	- A page the presents the clients product in a card format. Information retrieved from database.
+- #### `Header`
+	- A page header that scrolls to different portions of the home page or redirects to the shop.
+- #### `Foot`
+	- A page footer that includes social media links.
+- #### `Cart`
+	- A component that keeps track of the items added and the total cost including shipping and handling. Includes a checkout button that allows Stripe to take in information and process payments. All payment information is sent to the clients stripe account.
+    
+### Website Demonstration
+*(gif/vid here demonstrating website)*
+
+### Update Database Demonstration
+*(gif/vid here demonstrating database modification)*
+
+# MERN Template
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 This project contains an example project board meant to showcase how one can be used. The issues posted to it are not real issues.
 
-#### _**IMPORTANT NOTE**_ - 
+##### _**IMPORTANT NOTE**_ - 
 This project does not have a mongoDB connection setup. Setup the connection based on the environments below.
 - local development: create a config file (make sure to name it config.js) in the config folder, which exports your db.uri connection. An example is provided, config/config.example.js. This file will be ignored by git so your db credentials will be kept safe when the app is deployed.
 - production: Since the config file is not pushed when you deploy your app, you must specifiy your db uri in heorku. Set the uri in heroku as specified in [this](https://devcenter.heroku.com/articles/config-vars) resource. Make sure you name the environement variable "DB_URI".
@@ -21,13 +45,13 @@ deploying the app. For more information on deploying to heroku reference the ext
 - #### `src`
     - #### `assets` - This folder holds assets such as images, docs, and fonts
     - #### `components` - This folder holds all of the different components that will make up our views
+	- #### `pages` - This folder holds all of the different pages/tabs that will be available
     - #### `views` - These represent a unique page on the website i.e. Home or About. These are still normal react components.
     - #### `App.js` - This is what renders all of our browser routes and different views
     - #### `index.js` - This is what renders the react app by rendering App.js, should not change
 - #### `package.json` - Defines npm behaviors and packages for the client
 #### `server` - Holds the server application
 - #### `config` - This holds our configuration files, like mongoDB uri
-- #### `controllers` - These hold all of the callback functions that each route will call
 - #### `models` - This holds all of our data models
 - #### `routes` - This holds all of our HTTP to URL path associations for each unique url
 - #### `tests` - This holds all of our server tests that we have defined
@@ -79,4 +103,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
 

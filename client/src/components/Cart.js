@@ -1,57 +1,85 @@
-import React from "react";
+import React from 'react';
+import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {Container, Row, Col, Button} from 'react-bootstrap';
-import Sidebar from "react-sidebar";
+import Axios from 'axios';
+import Sidebar from 'react-sidebar';
+import StripeCheckout from 'react-stripe-checkout';
 
 class Cart extends React.Component {
+  handleToken = async (token) => {
+    let session = await Axios.post('/shop/checkout', {
+      token: token, 
+      totalCost: Math.round(this.props.totalCost * 100), 
+      items: JSON.stringify(this.props.cartItems.map(item => item.name + ' x ' + item.quantity))
+    })
+    if(session.status === 200){
+      this.props.history.push('/')
+      this.props.emptyCart()
+    }
+    else{
+      alert('An error has occured. The payment was not processed. Please try again later.')
+    }
+  }
+
   render() {
-    let list = new Array(25).fill(0)
     return (    
         <Sidebar
             open={this.props.isCartOpen}
             pullRight={true}
-            styles={sideBarStyle}
-            sidebar= {                          
-              <Container>
+            styles={{sidebar: {position: 'fixed', background: 'white', width: 300} }}
+            sidebar= { 
+              <div>                    
                 <div style={{height: 65}}/>
                 <div style={sideBarStyle.title}>My Cart</div>
                 {this.props.cartItems.length
                 ?
-                  <div>
-                    {this.props.cartItems.map((item, cartItemsIndex) => {
-                      return( 
-                        <Row style={sideBarStyle.item}>
-                          <Col>
-                            <Row>
-                              <Button class="btn btn-primary" onClick={() => this.props.removeItem(cartItemsIndex)}>X</Button>
-                              <div>
-                                <Row style={{marginLeft: 15}}>{item.name}</Row>
-                                <Row style={{marginLeft: 15}}>{"Qty: " + item.quantity}</Row>
-                              </div>
-                            </Row>
-                          </Col>
-                          <select class="col form-control form-control-sm" style={{alignSelf: "center"}}>
-                            {list.map((item, qnty) => {
-                              return(
-                                <option>{qnty + 1}</option>
-                              )
-                            })}
-                          </select>
-                          <Col style={{alignSelf: "center"}}>
-                            <t style={{fontSize: 15}}>${item.price}</t>
-                          </Col>
-                        </Row>
-                      )})}
-                    <div style={sideBarStyle.total}>Total ({this.props.cartItems.length} Item(s)): ${this.props.totalCost}</div>
-                    <div style={sideBarStyle.button}> 
-                      <Button class="btn btn-primary">Checkout</Button>
-                    </div>
+                  <React.Fragment>
+                    <Container>
+                      {this.props.cartItems.map((item, index) => {
+                        return( 
+                          <Row style={sideBarStyle.item}>
+                            <Col>
+                                <Button onClick={() => this.props.removeItem(index)}>X</Button>
+                            </Col>
+                            <Col style={{textAlign: 'center'}}>
+                              <div>{item.name}</div>
+                              <Row style={{justifyContent: 'center'}}>
+                                <button disabled={item.quantity === 1} onClick={() => this.props.decrementQuantity(index)}>-</button>
+                                <button>{item.quantity}</button>
+                                <button onClick={() => this.props.incrementQuantity(index)}>+</button>
+                              </Row>
+                            </Col>
+                            <Col style={{fontSize: 15, textAlign: 'end'}}>
+                              <span >${item.price}</span>
+                            </Col>
+                          </Row>
+                        )
+                      })}
+                    </Container>
+                    <div style={{textAlign: 'center', fontSize: 10, marginTop: 5}}>Shipping: $4.99</div>
+                    <div style={{textAlign: 'center'}}>Total ({this.props.cartItems.length} Item(s)): ${this.props.totalCost}</div>
+                    <div style={sideBarStyle.checkoutButton}>
+                      <StripeCheckout
+                        name='Order Form'
+                        amount={Math.round(this.props.totalCost * 100)}
+                        currency='USD'
+                        stripeKey='pk_test_GRBeSKSft03lpoYFBrCIDoEX00ZNrPirhG'
+                        shippingAddress
+                        billingAddress
+                        token={this.handleToken}
+                        opened={this.onOpened}
+                        closed={this.onClosed}
+                      >
+                        <Button>Checkout</Button>
+                      </StripeCheckout>
+                    </div>  
                     <div style={{height: 65}}/>
-                  </div>
+                  </React.Fragment>
                 :
-                  <div style={{textAlign: "center", padding: 15}}>Your shopping cart is empty</div>
+                  <div style={{textAlign: 'center', padding: 15}}>Your shopping cart is empty</div>
                 }
-              </Container>
+              </div>     
             }
         />
     )
@@ -69,38 +97,37 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return{
       removeItem: (index) => dispatch({type: 'REMOVE_ITEM', index}),
-      changeQuantity: (cartItemsIndex, qnty) => dispatch({type: 'CHANGE_QUANTITY', cartItemsIndex, qnty})
+      decrementQuantity: (index) => dispatch({type: 'DECREMENT_QUANTITY', index}),
+      incrementQuantity: (index) => dispatch({type: 'INCREMENT_QUANTITY', index}),
+      emptyCart: () => dispatch({type: 'EMPTY_CART'})
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cart))
 
 const sideBarStyle = {
   sidebar: {
-    background: "white",
+    background: 'white',
     width: 300,
-    position: "fixed"
+    position: 'fixed'
   },
   title: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 25,
     padding: 10,
-    borderBottom:  "2px solid #E1E8EE",
+    borderBottom:  '2px solid #E1E8EE',
   },
   item: {
-    textAlign: "right",
+    alignItems: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
     fontSize: 13,
-    padding: 15,
-    borderBottom:  "2px solid #E1E8EE"
+    borderBottom:  '2px solid #E1E8EE',
   },
-  total: {
-    textAlign: "center",
-    marginTop: 10
-  },
-  button: {
+  checkoutButton: {
     padding: 10,
-    textAlign: "center", 
-    fontSize: "20px"
+    textAlign: 'center', 
+    fontSize: '20px'
   }
 }
 
