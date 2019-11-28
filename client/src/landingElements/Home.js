@@ -6,7 +6,7 @@ import AdultWithKids from '../assets/adultWithKids.jpeg';
 class Home extends React.Component {
     render() { 
         return (
-            <div id='Home' style={{backgroundColor: 'white'}}>
+            <div id='Home' style={{backgroundColor: 'white', opacity: 0.9, borderStyle: 'solid', borderWidth: 2, borderColor: '#33C1FF'}}>
                 <Container>
                     <div style={{paddingTop: 50}}>
                         <Row className='justify-content-center'>

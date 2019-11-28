@@ -8,7 +8,7 @@ import redGrip from '../assets/redGrip.jpeg';
 class Media extends React.Component {
     render() { 
         return (
-            <div id='Media' style={{backgroundColor: 'white', textAlign: 'center'}}>
+            <div id='Media' style={{backgroundColor: 'white', opacity: 0.9, textAlign: 'center', borderStyle: 'solid', borderWidth: 2, borderColor: '#FF4AF4'}}>
                 <Carousel style={{marginBottom: '30px', marginTop: '30px', padding:'10px', width:750, display:"inline-block"}}>
                     <Carousel.Item>
                         <img src={redGrip} alt="First slide" className="d-block w-100" />
