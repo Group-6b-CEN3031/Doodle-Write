@@ -10,6 +10,10 @@ import NotFound from './pages/NotFound';
 
 
 class App extends React.Component {
+  componentWillMount(){
+    document.title = 'Doodlewrite'
+  }
+
   render() { 
     return (
       <Provider store={Store}>
