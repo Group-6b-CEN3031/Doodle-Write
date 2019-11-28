@@ -7,19 +7,22 @@ import Sidebar from 'react-sidebar';
 import StripeCheckout from 'react-stripe-checkout';
 
 class Cart extends React.Component {
+  refreshPage = () => {
+    this.props.history.push('/')
+    this.props.emptyCart()
+  }
+
   handleToken = async (token) => {
-    let session = await Axios.post('/shop/checkout', {
+    await Axios.post('/shop/checkout', {
       token: token, 
       totalCost: Math.round(this.props.totalCost * 100), 
       items: JSON.stringify(this.props.cartItems.map(item => item.name + ' x ' + item.quantity))
     })
-    if(session.status === 200){
-      this.props.history.push('/')
-      this.props.emptyCart()
-    }
-    else{
-      alert('An error has occured. The payment was not processed. Please try again later.')
-    }
+  }
+
+  checkout = (token) => {
+    this.handleToken(token)
+    this.refreshPage()
   }
 
   render() {
@@ -67,7 +70,7 @@ class Cart extends React.Component {
                         stripeKey='pk_test_GRBeSKSft03lpoYFBrCIDoEX00ZNrPirhG'
                         shippingAddress
                         billingAddress
-                        token={this.handleToken}
+                        token={this.checkout}
                         opened={this.onOpened}
                         closed={this.onClosed}
                       >
