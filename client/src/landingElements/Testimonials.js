@@ -34,13 +34,13 @@ class Testimonials extends React.Component {
                     </div>
                     <Row>
                         <Col className="align-items-center">
-                            <img src={quotes} alt="quotation marks" className="shadow-lg" style={{width: "100%"}}/>
+                            <img src={quotes} alt="quotation marks" className="shadow-lg" style={{width: "80%"}}/>
                         </Col>
                         <Col className="d-flex flex-column">
                         {this.state.testimonials.length
                         ?
                             this.state.testimonials.map((item, index) => { return (
-                                <div key={index} style={{textAlign: 'left', padding: 5, fontFamily: 'Arial', fontStyle: 'italic', color: '#404040'}}>{item.content}{' - '}{item.name}{' '}{item.credentials}</div>
+                                <div key={index} style={{textAlign: 'left', padding: 10, fontFamily: 'Arial', fontStyle: 'italic', color: '#404040'}}>{item.content}{' - '}{item.name}{' '}{item.credentials}</div>
 
                             )})
                         :
