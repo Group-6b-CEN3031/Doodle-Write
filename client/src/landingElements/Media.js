@@ -1,29 +1,34 @@
 import React from 'react';
 import Slider from 'react-slick';
-
-import redGrip from '../assets/redGrip.jpeg';
+import Axios from "axios";
 
 class Media extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            images: []
+        }
+    }
+
+    componentWillMount() {
+        Axios.get('/images')
+            .then(response => {
+                this.setState({images: response.data})
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
     render() { 
         return (
             <div id='Media' style={{paddingTop: 125, paddingBottom: 150, paddingLeft: 150, paddingRight: 150, backgroundColor: 'white', opacity: 0.9, borderStyle: 'solid', borderWidth: 2, borderColor: '#FF4AF4'}}>
                 <div style={{paddingBottom: 25, textAlign: 'center', fontFamily: 'Arial Rounded MT Bold'}}>Media</div>
                 <Slider {...settings}>
-                    <div>
-                        <img src={redGrip} alt='Red grip'/>
+                {this.state.images.map((item, index) => { return (
+                    <div key={index}>
+                        <img src={item.url} alt={'image ' + index}/>
                     </div>
-                    <div>
-                        <img src={redGrip} alt='Red grip'/>
-                    </div>
-                    <div>
-                        <img src={redGrip} alt='Red grip'/>
-                    </div>
-                    <div>
-                        <img src={redGrip} alt='Red grip'/>
-                    </div>
-                    <div>
-                        <img src={redGrip} alt='Red grip'/>
-                    </div>
+                )})}
                 </Slider>
             </div>  
         )

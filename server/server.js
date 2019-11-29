@@ -24,6 +24,7 @@ app.use(morgan("dev"));
 // add a router
 app.use('/shop/data', require('./routes/shop.router'));
 app.use('/shop/checkout', require('./routes/checkout.router'));
+app.use('/images', require('./routes/images.router'));
 app.use('/testimonials', require('./routes/testimonials.router'));
 app.use('/mail', require('./routes/mail.router'));
 
