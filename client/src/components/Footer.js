@@ -7,7 +7,6 @@ class Footer extends React.Component {
     render() { 
         return (
             <React.Fragment>
-                <div style={{height: 100}}/>
                 <Navbar bg='light' expand='lg' sticky='bottom' className='shadow-lg bg-white rounded'>
                     <Nav className='mr-auto'>
                         <Container>

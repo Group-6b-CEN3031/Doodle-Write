@@ -47,7 +47,6 @@ class ContactUs extends React.Component {
     render() {
         return (
             <div id='Contact Us' style={{backgroundColor: 'white', opacity: 0.9, borderStyle: 'solid', borderWidth: 2, borderColor: '#FF3030'}}>
-                
                 <Form style={{paddingTop: 30, paddingBottom: 30, paddingLeft: 400, paddingRight: 400}}>
                     <div style={{paddingBottom: 10, textAlign: 'center', fontFamily: 'Arial Rounded MT Bold'}}>If you have a general question, please fill out this form and send us a message!</div>
                     <Form.Group controlId="formGroupName" style={{width: '48%', marginRight:'4%', display:"inline-block"}}>
