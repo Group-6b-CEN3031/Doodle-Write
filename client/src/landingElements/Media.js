@@ -26,7 +26,7 @@ class Media extends React.Component {
                 <Slider {...settings}>
                 {this.state.images.map((item, index) => { return (
                     <div key={index}>
-                        <img src={item.url} alt={'image ' + index} style={{maxWidth: 400, maxHeight: 300}}/>
+                        <img src={item.url} alt={'image ' + index} style={{maxWidth: 400, maxHeight: 266}}/>
                     </div>
                 )})}
                 </Slider>
