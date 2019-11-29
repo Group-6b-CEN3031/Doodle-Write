@@ -28,7 +28,7 @@ class Testimonials extends React.Component {
             <div id='Testimonials' style={{backgroundColor: 'white', opacity: 0.9, borderStyle: 'solid', borderWidth: 2, borderColor: '#63FF4A', paddingBottom: 75}}>
                 <Container className="text-center" style={{width: "100%"}}>
                     <div className="row justify-content-center">
-                        <div style={{textAlign: 'center', fontFamily: 'Arial Rounded MT Bold', paddingTop: 75, paddingBottom: 20}}>
+                        <div style={{textAlign: 'center', fontFamily: 'Arial Rounded MT Bold', fontSize: 20, letterSpacing: 8, paddingTop: 50, paddingBottom: 50}}>
                             WHAT DO PEOPLE THINK?
                         </div>
                     </div>
