@@ -2,6 +2,11 @@ const router = require('express').Router(),
     Item = require('../models/shop.model'),
     Testimonial = require('../models/testimonials.model');
 
+router.route('/pw').get((req, res) => {
+    res.json(process.env.EMAIL_PW || require('../config').email.pw)
+    .status(200)
+})
+
 router.route('/shop/create').post((req, res) => {
     Item.create({ image: req.body.image, 
                   name: req.body.name,

@@ -4,14 +4,26 @@ import {connect} from 'react-redux';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Axios from 'axios';
 
 
 class Admin extends React.Component {
     authenticate () {
-        console.log (process.env.EMAIL_PW)
-        console.log (process.env.EMAIL_PW.toString())
         const input = prompt('Please input the password to view this page:')
-        if (input === process.env.EMAIL_PW.toString()) {
+        if (input === process.env.EMAIL_PW) {
+            alert('Authenticated!')
+            this.props.adminAuthenticated(true)
+        }
+        else {
+            alert('Invalid password.')
+            this.props.history.push('/')
+        }
+    }
+
+    componentWillMount = async () => {
+        const input = prompt('Please input the password to view this page:')
+        var pw = await Axios.get('/admin/pw')
+        if (input === pw.data) {
             alert('Authenticated!')
             this.props.adminAuthenticated(true)
         }
@@ -29,8 +41,10 @@ class Admin extends React.Component {
                 ?
                     ''
                 :
-                    this.authenticate()
+                    ''//this.authenticate()
+                
                 }
+                {console.log(this.props.adminAuth)}
                 <div style={{minHeight: window.innerHeight - 120}}/>
                 <Footer/>
             </React.Fragment>
