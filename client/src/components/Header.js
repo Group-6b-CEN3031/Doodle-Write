@@ -20,7 +20,7 @@ class Header extends React.Component {
                     <Navbar.Brand href='/'>Doodlewrite</Navbar.Brand>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse id='basic-navbar-nav'>
-                    {window.location.pathname === '/'
+                    {window.location.pathname === '/' 
                     ?
                         <Nav className='mr-auto'>
                             <Scroll.Link to='Home' smooth={true} offset={-275}><Nav.Link>Home</Nav.Link></Scroll.Link>
@@ -28,23 +28,23 @@ class Header extends React.Component {
                             <Scroll.Link to='Testimonials' smooth={true} offset={-250}><Nav.Link >Testimonials</Nav.Link></Scroll.Link>
                             <Scroll.Link to='Contact Us' smooth={true} offset={-100}><Nav.Link>Contact Us</Nav.Link></Scroll.Link>
                             <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
+                            <Nav.Link className={(this.props.tab === 'Admin' ? 'active' : '')} href='/admin'>Admin</Nav.Link>
+                        </Nav>
+                    :window.location.pathname === '/admin' || window.location.pathname === '/admin/shop' || window.location.pathname === '/admin/testimonials'
+                    ?
+                        <Nav className='mr-auto'>
+                            <Nav.Link href='/'>Home</Nav.Link>
+                            <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
+                            <Nav.Link className={(this.props.tab === 'Admin' ? 'active' : '')} href='/admin'>Admin</Nav.Link>
+                            <Nav.Link className={(this.props.tab === 'Shop Admin' ? 'active' : '')} href='/admin/shop'>Shop Admin</Nav.Link>
+                            <Nav.Link className={(this.props.tab === 'Testimonials Admin' ? 'active' : '')} href='/admin/testimonials'>Testimonials Admin</Nav.Link>
                         </Nav>
                     :
-                        window.location.pathname === '/shop'
-                        ?
-                            <Nav className='mr-auto'>
-                                <Nav.Link href='/'>Home</Nav.Link>
-                                <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
-                                <Nav.Link className={(this.props.tab === 'Admin' ? 'active' : '')} href='/admin'>Admin</Nav.Link>
-                            </Nav>
-                        :
-                            <Nav className='mr-auto'>
-                                <Nav.Link href='/'>Home</Nav.Link>
-                                <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
-                                <Nav.Link className={(this.props.tab === 'Admin' ? 'active' : '')} href='/admin'>Admin</Nav.Link>
-                                <Nav.Link className={(this.props.tab === 'Shop Admin' ? 'active' : '')} href='/admin/shop'>Shop Admin</Nav.Link>
-                                <Nav.Link className={(this.props.tab === 'Testimonials Admin' ? 'active' : '')} href='/admin/testimonials'>Testimonials Admin</Nav.Link>
-                            </Nav>
+                        <Nav className='mr-auto'>
+                            <Nav.Link href='/'>Home</Nav.Link>
+                            <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
+                            <Nav.Link className={(this.props.tab === 'Admin' ? 'active' : '')} href='/admin'>Admin</Nav.Link>
+                        </Nav>
                     }
                     </Navbar.Collapse>
                     <Button onClick={() => this.setState({...this.state, isCartOpen: !this.state.isCartOpen})}>

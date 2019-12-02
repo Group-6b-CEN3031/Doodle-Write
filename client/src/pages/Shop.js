@@ -28,7 +28,7 @@ class Shop extends React.Component {
         return (
             <React.Fragment>
                 <Header tab='Shop'/>
-                <Container style={{width: '100%'}}>
+                <Container style={{width: '100%', paddingBottom: 75, minHeight: window.innerHeight - 120}}>
                 {this.state.items.length
                 ?
                     <Row className='justify-content-around'>
@@ -54,7 +54,6 @@ class Shop extends React.Component {
                     <div style={{textAlign: 'center', marginTop: 40, height: window.innerHeight}}>The shop is currently unavailable. Please check again later.</div>
                 }
                 </Container>
-                <div style={{height: 75}}/>
                 <Footer/>
             </React.Fragment>
         )

@@ -1,13 +1,11 @@
 import React from 'react';
-
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux';
 import {Button, Form} from 'react-bootstrap';
 import axios from 'axios';
 
-import {withRouter} from 'react-router-dom'
-import {connect} from 'react-redux';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 class ShopAdmin extends React.Component {
     constructor(props) {
@@ -98,7 +96,7 @@ class ShopAdmin extends React.Component {
             <React.Fragment>
                 <Header tab='Shop Admin'/>
                 {this.props.adminAuth ?
-                    <div style={{justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
+                    <div style={{justifyContent: 'center', alignItems: 'center', textAlign: 'center', minHeight: window.innerHeight - 120, }}>
                         <div id='Shop Admin' style={{backgroundColor: 'white', opacity: 0.9}}>
                             <Form style={{paddingTop: 30, paddingBottom: 30, paddingLeft: '30%', paddingRight: '30%'}}>
                                 <div style={{paddingBottom: 10, textAlign: 'center', fontFamily: 'Arial Rounded MT Bold'}}>Create or Delete a Shop Item:</div>
@@ -121,7 +119,7 @@ class ShopAdmin extends React.Component {
                         </div>
                     </div>
                 :
-                    this.props.history.push('/admin')
+                    this.props.history.push('/')
                 }
                 <Footer/>
             </React.Fragment>

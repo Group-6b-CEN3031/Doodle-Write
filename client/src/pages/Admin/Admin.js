@@ -1,10 +1,10 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-import {withRouter} from 'react-router-dom'
-import {connect} from 'react-redux';
 
 class Admin extends React.Component {
     authenticate () {
@@ -22,7 +22,13 @@ class Admin extends React.Component {
         return (
             <React.Fragment>
                 <Header tab='Admin'/>
-                { this.authenticate() }
+                {this.props.adminAuth
+                ?
+                    ''
+                :
+                    this.authenticate()
+                }
+                <div style={{minHeight: window.innerHeight - 120}}/>
                 <Footer/>
             </React.Fragment>
         )
