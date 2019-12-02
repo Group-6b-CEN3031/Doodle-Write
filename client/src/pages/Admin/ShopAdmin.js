@@ -38,7 +38,7 @@ class ShopAdmin extends React.Component {
 
     beforeUpdateByName = async() => {
         await axios.post('/admin/shop/updatebyname', {
-            image: this.state.image === '' ? '.../100px180/' : this.state.image,
+            image: this.state.image == '' ? '.../100px180/' : this.state.image,
             name: this.state.name,
             price: this.state.price,
             description: this.state.description
@@ -47,7 +47,7 @@ class ShopAdmin extends React.Component {
 
     beforeUpdateByPrice = async() => {
         await axios.post('/admin/shop/updatebyprice', {
-            image: this.state.image === '' ? '.../100px180/' : this.state.image,
+            image: this.state.image == '' ? '.../100px180/' : this.state.image,
             name: this.state.name,
             price: this.state.price,
             description: this.state.description

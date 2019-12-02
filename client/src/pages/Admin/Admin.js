@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 
 class Admin extends React.Component {
     authenticate () {
-        if (prompt('Please input the password to view this page:') === process.env.EMAIL_PW) {
+        if (prompt('Please input the password to view this page:') == process.env.EMAIL_PW) {
             alert('Authenticated!')
             this.props.adminAuthenticated(true)
         }
