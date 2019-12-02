@@ -22,7 +22,6 @@ class Testimonials extends React.Component {
     }
 
     render() {
-        console.log(this.state.testimonials)
         return (
             <div id='Testimonials' style={{backgroundColor: 'white', opacity: 0.9, borderStyle: 'solid', borderWidth: 2, borderColor: '#63FF4A', paddingBottom: 75}}>
                 <Container className="text-center" style={{width: "100%"}}>

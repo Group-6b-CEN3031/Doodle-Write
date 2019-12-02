@@ -19,7 +19,7 @@ class LandingPage extends React.Component {
 
     render() {
         return (
-            <React.Fragment style={{minHeight: window.innerHeight - 120}}>
+            <div style={{minHeight: window.innerHeight - 120}}>
                 <video id='background-video' loop autoPlay muted style={{position: 'fixed', zIndex: -1}}>
                     <source src={Demo} type='video/mp4' />
                     Your browser does not support the video tag.
@@ -35,7 +35,7 @@ class LandingPage extends React.Component {
                 <ContactUs/>
                 <div style={{height: 100}}/>
                 <Footer/>
-            </React.Fragment>
+            </div>
         )
     }
 }

@@ -46,7 +46,9 @@ class Home extends React.Component {
     }
 }
  
-function mapStateToProps(state){}
+function mapStateToProps(state){
+    return{}
+}
   
 function mapDispatchToProps(dispatch){
     return{

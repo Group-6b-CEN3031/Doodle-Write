@@ -45,7 +45,6 @@ class Admin extends React.Component {
                     ''//this.authenticate()
                 
                 }
-                {console.log(this.props.adminAuth)}
                 <div style={{minHeight: window.innerHeight - 120}}/>
                 <Footer/>
             </React.Fragment>
