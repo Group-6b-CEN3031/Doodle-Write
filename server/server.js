@@ -19,7 +19,7 @@ mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
 });
 
 // enable request logging for development debugging
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 
 // add a router
 app.use('/shop/data', require('./routes/shop.router'));
