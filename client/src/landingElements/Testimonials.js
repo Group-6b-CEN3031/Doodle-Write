@@ -50,7 +50,7 @@ class Testimonials extends React.Component {
                             this.state.testimonials.map((item, index) => { return (
 
 
-                                <Card style={{width: '18rem', borderColor:'rgb(99, 255, 74)'}}>
+                                <Card border="success" style={{ width: '18rem' }}>
                                     
                                     <Card.Body>
                                     <Card.Title></Card.Title>
