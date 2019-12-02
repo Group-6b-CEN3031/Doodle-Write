@@ -1,10 +1,13 @@
 import React  from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux';
 
 import AdultWithKids from '../assets/adultWithKids.jpeg';
 
 class Home extends React.Component {
     render() { 
+        this.props.adminAuthenticated(false)
         return (
             <div id='Home' style={{backgroundColor: 'white', opacity: 0.9, borderStyle: 'solid', borderWidth: 2, borderColor: '#33C1FF'}}>
                 <Container>
@@ -43,4 +46,12 @@ class Home extends React.Component {
     }
 }
  
-export default Home;
+function mapStateToProps(state){}
+  
+function mapDispatchToProps(dispatch){
+    return{
+        adminAuthenticated: (value) => dispatch({type: 'ADMIN_AUTHENTICATED', value})
+    }
+}
+  
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

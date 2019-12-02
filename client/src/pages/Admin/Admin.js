@@ -3,24 +3,18 @@ import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-import axios from 'axios';
-import {Nav} from 'react-bootstrap';
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux';
 
 class Admin extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            authenticated: false
-        }
-    }
-
-    componentWillMount () {
-        const input = prompt('Please input the password to view this page:')
-        if (input === axios.get('/admin/pw').data) {
-            this.setState({authenticated: true})
+    authenticate () {
+        if (prompt('Please input the password to view this page:') === process.env.EMAIL_PW) {
+            alert('Authenticated!')
+            this.props.adminAuthenticated(true)
         }
         else {
-            this.setState({authenticated: false})
+            alert('Invalid password.')
+            this.props.history.push('/')
         }
     }
 
@@ -28,16 +22,23 @@ class Admin extends React.Component {
         return (
             <React.Fragment>
                 <Header tab='Admin'/>
-                {!this.state.authenticated
-                ?
-                    <Nav.Link href='/shop'/>
-                :
-                    <div>Authenticated!</div>
-                }
+                { this.authenticate() }
                 <Footer/>
             </React.Fragment>
         )
     }
 }
 
-export default Admin;
+function mapStateToProps(state) {
+    return {
+        adminAuth: state.adminAuth
+    }
+}
+  
+function mapDispatchToProps(dispatch) {
+    return {
+        adminAuthenticated: (value) => dispatch({type: 'ADMIN_AUTHENTICATED', value})
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Admin));

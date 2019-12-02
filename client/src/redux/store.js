@@ -5,7 +5,8 @@ const persistedState = loadState();
 
 const initialState = {
     cartItems: [],
-    totalCost: 0
+    totalCost: 0,
+    adminAuth: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -68,6 +69,12 @@ const reducer = (state = initialState, action) => {
         }
         case 'EMPTY_CART':{
             return initialState
+        }
+        case 'ADMIN_AUTHENTICATED':{
+            return{
+                ...state,
+                adminAuth: action.value
+            }
         }
         default:
             return state

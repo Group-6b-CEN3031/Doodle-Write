@@ -6,6 +6,9 @@ import Footer from '../../components/Footer';
 import {Button, Form} from 'react-bootstrap';
 import axios from 'axios';
 
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux';
+
 class ShopAdmin extends React.Component {
     constructor(props) {
         super(props);
@@ -94,32 +97,42 @@ class ShopAdmin extends React.Component {
         return (
             <React.Fragment>
                 <Header tab='Shop Admin'/>
-                <div style={{justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
-                    <div id='Shop Admin' style={{backgroundColor: 'white', opacity: 0.9}}>
-                        <Form style={{paddingTop: 30, paddingBottom: 30, paddingLeft: '30%', paddingRight: '30%'}}>
-                            <div style={{paddingBottom: 10, textAlign: 'center', fontFamily: 'Arial Rounded MT Bold'}}>Create or Delete a Shop Item:</div>
-                            <Form.Group controlId="formGroupImage" style={{width: '100%'}}>
-                                <Form.Control  type="text" placeholder="Image" name='image' value={this.state.image} onChange={this.handleChange}/>
-                            </Form.Group>
-                            <Form.Group controlId="formGroupName" style={{width: '100%'}}>
-                                <Form.Control  type="text" placeholder="Name" name='name' value={this.state.name} onChange={this.handleChange}/>
-                            </Form.Group>
-                            <Form.Group controlId="formGroupPrice" style={{width: '100%'}}>
-                                <Form.Control  type="number" step="0.01" placeholder="Price" name='price' value={this.state.price} onChange={this.handleChange}/>
-                            </Form.Group>
-                            <Form.Group controlId="formGroupDescription" >
-                                <Form.Control style={{minHeight:'250px'}} as="textarea" rows='8' placeholder="Description" name='description' value={this.state.description} onChange={this.handleChange}/>
-                            </Form.Group>
-                            <div style={{textAlign: 'center'}}>
-                                <Button onClick={() => this.create()} style={{width:'20%'}}>Create</Button> <Button onClick={() => this.updateByName()} style={{width:'20%'}}>Update By Name</Button> <Button onClick={() => this.updateByPrice()} style={{width:'20%'}}>Update By Price</Button> <Button onClick={() => this.delete()} style={{width:'20%'}}>Delete</Button>
-                            </div>
-                        </Form>
+                {this.props.adminAuth ?
+                    <div style={{justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
+                        <div id='Shop Admin' style={{backgroundColor: 'white', opacity: 0.9}}>
+                            <Form style={{paddingTop: 30, paddingBottom: 30, paddingLeft: '30%', paddingRight: '30%'}}>
+                                <div style={{paddingBottom: 10, textAlign: 'center', fontFamily: 'Arial Rounded MT Bold'}}>Create or Delete a Shop Item:</div>
+                                <Form.Group controlId="formGroupImage" style={{width: '100%'}}>
+                                    <Form.Control  type="text" placeholder="Image" name='image' value={this.state.image} onChange={this.handleChange}/>
+                                </Form.Group>
+                                <Form.Group controlId="formGroupName" style={{width: '100%'}}>
+                                    <Form.Control  type="text" placeholder="Name" name='name' value={this.state.name} onChange={this.handleChange}/>
+                                </Form.Group>
+                                <Form.Group controlId="formGroupPrice" style={{width: '100%'}}>
+                                    <Form.Control  type="number" step="0.01" placeholder="Price" name='price' value={this.state.price} onChange={this.handleChange}/>
+                                </Form.Group>
+                                <Form.Group controlId="formGroupDescription" >
+                                    <Form.Control style={{minHeight:'250px'}} as="textarea" rows='8' placeholder="Description" name='description' value={this.state.description} onChange={this.handleChange}/>
+                                </Form.Group>
+                                <div style={{textAlign: 'center'}}>
+                                    <Button onClick={() => this.create()} style={{width:'20%'}}>Create</Button> <Button onClick={() => this.updateByName()} style={{width:'20%'}}>Update By Name</Button> <Button onClick={() => this.updateByPrice()} style={{width:'20%'}}>Update By Price</Button> <Button onClick={() => this.delete()} style={{width:'20%'}}>Delete</Button>
+                                </div>
+                            </Form>
+                        </div>
                     </div>
-                </div>
+                :
+                    this.props.history.push('/admin')
+                }
                 <Footer/>
             </React.Fragment>
         )
     }
 }
- 
-export default ShopAdmin;
+
+function mapStateToProps(state){
+    return{
+      adminAuth: state.adminAuth
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(ShopAdmin));
