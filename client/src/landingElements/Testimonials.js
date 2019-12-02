@@ -40,7 +40,8 @@ class Testimonials extends React.Component {
                         {this.state.testimonials.length
                         ?
                             this.state.testimonials.map((item, index) => { return (
-                                <div key={index} style={{textAlign: 'left', padding: 10, fontFamily: 'Arial', fontStyle: 'italic', color: '#404040'}}>{item.content}{' - '}{item.name}{' '}{item.credentials}</div>
+                                <div key={index} style={{textAlign: 'left', padding: 10, fontFamily: 'Arial', fontStyle: 'italic', color: '#404040'}}>{item.content}{' - '}<t style={{fontWeight: 'bolder', color: 'black'}}>{item.name}</t>{' '}
+                                <t style={{fontWeight: 'bold',fontStyle:'normal',color:'black'}}> ({item.credentials})</t></div>
 
                             )})
                         :
