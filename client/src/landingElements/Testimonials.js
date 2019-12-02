@@ -33,56 +33,9 @@ class Testimonials extends React.Component {
                         </div>
                     </div>
                     <Row>
-                        <Col className="align-items-center">
-                            <img src={quotes} alt="quotation marks" className="shadow-lg" style={{width: "80%"}}/>
-                        </Col>
                         
                         <Row style = {{paddingTop:'50px'}}>
-                            <CardDeck>
-                                <Card>
-                                    
-                                    <Card.Body>
-                                    <Card.Title></Card.Title>
-                                    <Card.Img variant="bottom" src={RedQuote} style={{height:'30px',width:'30px'}}/>
-                                    <p></p>
-                                    <Card.Text style={{fontStyle:'italic', fontWeight:'400'}}>
-                                    I was pleasantly surprised to see how it captured and kept my students attention.
-                                    </Card.Text>
-                                    
-                                    <Card.Text style={{fontWeight:'bold'}}>
-                                    - Theresa P. (Special Education Teacher)
-                                    </Card.Text>
-                                    
-                                    </Card.Body>
-                                </Card>
-                                <Card>
-                                    <Card.Img variant="top" src="holder.js/100px160" />
-                                    <Card.Body>
-                                    <Card.Title>Card title</Card.Title>
-                                    <Card.Text>
-                                        This card has supporting text below as a natural lead-in to additional
-                                        content.{' '}
-                                    </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                    <small className="text-muted">Last updated 3 mins ago</small>
-                                    </Card.Footer>
-                                </Card>
-                                <Card>
-                                    <Card.Img variant="top" src="holder.js/100px160" />
-                                    <Card.Body>
-                                    <Card.Title>Card title</Card.Title>
-                                    <Card.Text>
-                                        This is a wider card with supporting text below as a natural lead-in to
-                                        additional content. This card has even longer content than the first to
-                                        show that equal height action.
-                                    </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                    <small className="text-muted">Last updated 3 mins ago</small>
-                                    </Card.Footer>
-                                </Card>
-                            </CardDeck>
+                            
                         
                         
                         
@@ -90,16 +43,37 @@ class Testimonials extends React.Component {
                         </Row>
 
                         <Col className="d-flex flex-column">
+
+                    <CardDeck>
                         {this.state.testimonials.length
                         ?
                             this.state.testimonials.map((item, index) => { return (
-                                <div key={index} style={{textAlign: 'left', padding: 10, fontFamily: 'Arial', fontStyle: 'italic', color: '#404040'}}>{item.content}{' - '}<t style={{fontWeight: 'bolder', color: 'black'}}>{item.name}</t>{' '}
-                                <t style={{fontWeight: 'bold',fontStyle:'normal',color:'black'}}> ({item.credentials})</t></div>
+
+
+                                <Card style={{width: '18rem', borderColor:'rgb(99, 255, 74)'}}>
+                                    
+                                    <Card.Body>
+                                    <Card.Title></Card.Title>
+                                    <Card.Img variant="bottom" src={RedQuote} style={{height:'30px',width:'30px'}}/>
+                                    <p></p>
+                                    <Card.Text style={{fontStyle:'italic', fontWeight:'400'}}>
+                                    {item.content}
+                                    </Card.Text>
+                                    
+                                    <Card.Text style={{fontWeight:'bold'}}>
+                                        {item.name}{' '}({item.credentials})
+                                    </Card.Text>
+                                    
+                                    </Card.Body>
+                                </Card>
 
                             )})
                         :
                             <div style={{textAlign: 'center', padding: 5, fontFamily: 'Arial', fontStyle: 'italic', color: '#404040'}}>No testimnoials currently available.</div>
                         }
+
+                    </CardDeck>
+
                         </Col>
                     </Row>
                 </Container>
