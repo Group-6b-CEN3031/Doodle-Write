@@ -11,7 +11,7 @@
 - #### `Admin Page`
 	- A page that takes in user credentials and allows an admin to modify the database that presents the shop and testimonials.
 - #### `Header`
-	- A page header that scrolls to different portions of the home page or redirects to the shop.
+	- A page header that scrolls to different portions of the home page, redirects to the shop, or redirects to the admin page.
 - #### `Foot`
 	- A page footer that includes social media links.
 - #### `Cart`
