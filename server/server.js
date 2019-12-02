@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 // connect to database
-mongoose.connect(process.env.DB_URI || require('./config').db.adminuri, {
+mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
