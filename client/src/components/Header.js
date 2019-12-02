@@ -30,10 +30,21 @@ class Header extends React.Component {
                             <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
                         </Nav>
                     :
-                        <Nav className='mr-auto'>
-                            <Nav.Link href='/'>Home</Nav.Link>
-                            <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
-                        </Nav>    
+                        window.location.pathname === '/shop'
+                        ?
+                            <Nav className='mr-auto'>
+                                <Nav.Link href='/'>Home</Nav.Link>
+                                <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
+                                <Nav.Link className={(this.props.tab === 'Admin' ? 'active' : '')} href='/admin'>Admin</Nav.Link>
+                            </Nav>
+                        :
+                            <Nav className='mr-auto'>
+                                <Nav.Link href='/'>Home</Nav.Link>
+                                <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
+                                <Nav.Link className={(this.props.tab === 'Admin' ? 'active' : '')} href='/admin'>Admin</Nav.Link>
+                                <Nav.Link className={(this.props.tab === 'Shop Admin' ? 'active' : '')} href='/admin/shop'>Shop Admin</Nav.Link>
+                                <Nav.Link className={(this.props.tab === 'Testimonials Admin' ? 'active' : '')} href='/admin/testimonials'>Testimonials Admin</Nav.Link>
+                            </Nav>
                     }
                     </Navbar.Collapse>
                     <Button onClick={() => this.setState({...this.state, isCartOpen: !this.state.isCartOpen})}>

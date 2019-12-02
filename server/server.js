@@ -11,11 +11,11 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 // connect to database
-mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
+mongoose.connect(process.env.DB_URI || require('./config').db.adminuri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify: false
+    useFindAndModify: true
 });
 
 // enable request logging for development debugging
@@ -27,6 +27,7 @@ app.use('/shop/checkout', require('./routes/checkout.router'));
 app.use('/images', require('./routes/images.router'));
 app.use('/testimonials', require('./routes/testimonials.router'));
 app.use('/mail', require('./routes/mail.router'));
+app.use('/admin', require('./routes/admin.router'));
 
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
