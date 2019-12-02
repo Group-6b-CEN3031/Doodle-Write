@@ -8,6 +8,8 @@
 	- A page with general information about the clients product. Includes the following sectons: Media, Testimonials, and Contact Us.
 - #### `Shop Page`
 	- A page the presents the clients product in a card format. Information retrieved from database.
+- #### `Admin Page`
+	- A page that takes in user credentials and allows an admin to modify the database that presents the shop and testimonials.
 - #### `Header`
 	- A page header that scrolls to different portions of the home page or redirects to the shop.
 - #### `Foot`
