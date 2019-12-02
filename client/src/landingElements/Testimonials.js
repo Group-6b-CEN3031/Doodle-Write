@@ -1,7 +1,7 @@
 import React from "react";
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Card, CardDeck} from 'react-bootstrap';
 import Axios from "axios";
-
+import RedQuote from "./../assets/redquote.png";
 import quotes from "./../assets/quotes.jpg";
 
 class Testimonials extends React.Component {
@@ -36,6 +36,59 @@ class Testimonials extends React.Component {
                         <Col className="align-items-center">
                             <img src={quotes} alt="quotation marks" className="shadow-lg" style={{width: "80%"}}/>
                         </Col>
+                        
+                        <Row style = {{paddingTop:'50px'}}>
+                            <CardDeck>
+                                <Card>
+                                    
+                                    <Card.Body>
+                                    <Card.Title></Card.Title>
+                                    <Card.Img variant="bottom" src={RedQuote} style={{height:'30px',width:'30px'}}/>
+                                    <p></p>
+                                    <Card.Text style={{fontStyle:'italic', fontWeight:'400'}}>
+                                    I was pleasantly surprised to see how it captured and kept my students attention.
+                                    </Card.Text>
+                                    
+                                    <Card.Text style={{fontWeight:'bold'}}>
+                                    - Theresa P. (Special Education Teacher)
+                                    </Card.Text>
+                                    
+                                    </Card.Body>
+                                </Card>
+                                <Card>
+                                    <Card.Img variant="top" src="holder.js/100px160" />
+                                    <Card.Body>
+                                    <Card.Title>Card title</Card.Title>
+                                    <Card.Text>
+                                        This card has supporting text below as a natural lead-in to additional
+                                        content.{' '}
+                                    </Card.Text>
+                                    </Card.Body>
+                                    <Card.Footer>
+                                    <small className="text-muted">Last updated 3 mins ago</small>
+                                    </Card.Footer>
+                                </Card>
+                                <Card>
+                                    <Card.Img variant="top" src="holder.js/100px160" />
+                                    <Card.Body>
+                                    <Card.Title>Card title</Card.Title>
+                                    <Card.Text>
+                                        This is a wider card with supporting text below as a natural lead-in to
+                                        additional content. This card has even longer content than the first to
+                                        show that equal height action.
+                                    </Card.Text>
+                                    </Card.Body>
+                                    <Card.Footer>
+                                    <small className="text-muted">Last updated 3 mins ago</small>
+                                    </Card.Footer>
+                                </Card>
+                            </CardDeck>
+                        
+                        
+                        
+                        
+                        </Row>
+
                         <Col className="d-flex flex-column">
                         {this.state.testimonials.length
                         ?
