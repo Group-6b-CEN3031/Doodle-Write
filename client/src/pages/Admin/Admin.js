@@ -8,7 +8,10 @@ import Footer from '../../components/Footer';
 
 class Admin extends React.Component {
     authenticate () {
-        if (prompt('Please input the password to view this page:') === process.env.EMAIL_PW.toString()) {
+        console.log (process.env.EMAIL_PW)
+        console.log (process.env.EMAIL_PW.toString())
+        const input = prompt('Please input the password to view this page:')
+        if (input === process.env.EMAIL_PW.toString()) {
             alert('Authenticated!')
             this.props.adminAuthenticated(true)
         }
