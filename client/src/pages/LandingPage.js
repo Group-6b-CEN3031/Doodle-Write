@@ -25,7 +25,7 @@ class LandingPage extends React.Component {
                     Your browser does not support the video tag.
                 </video>
                 <Header/>
-                <div style={{height: 200}}/>
+                <div style={{height: 125}}/>
                 <Home/>
                 <div style={{height: 250}}/>
                 <Media/>    
@@ -33,7 +33,7 @@ class LandingPage extends React.Component {
                 <Testimonials/>
                 <div style={{height: 250}}/>
                 <ContactUs/>
-                <div style={{height: 175}}/>
+                <div style={{height: 100}}/>
                 <Footer/>
             </React.Fragment>
         )

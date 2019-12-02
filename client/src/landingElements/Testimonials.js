@@ -2,7 +2,6 @@ import React from "react";
 import {Container, Row, Col, Card, CardDeck} from 'react-bootstrap';
 import Axios from "axios";
 import RedQuote from "./../assets/redquote.png";
-import quotes from "./../assets/quotes.jpg";
 
 class Testimonials extends React.Component {
     constructor(props) {
@@ -32,50 +31,29 @@ class Testimonials extends React.Component {
                             WHAT DO PEOPLE THINK?
                         </div>
                     </div>
-                    <Row>
-                        
-                        <Row style = {{paddingTop:'50px'}}>
-                            
-                        
-                        
-                        
-                        
-                        </Row>
+                    {this.state.testimonials.length
+                    ?
+                        <CardDeck>
+                        {this.state.testimonials.map((item, index) => { return (
 
-                        <Col className="d-flex flex-column">
+                                    <Card key={index} border="success" style={{ width: '18rem' }}>
+                                        <Card.Body className='d-flex flex-column'>
+                                            <Card.Img variant="bottom" src={RedQuote} style={{height:'30px', width:'30px'}}/>
+                                            <p></p>
+                                            <Card.Text style={{fontStyle:'italic', fontWeight:'400'}}>
+                                                {item.content}
+                                            </Card.Text>
+                                            <Card.Text className='mt-auto' style={{fontWeight:'bold'}}>
+                                                {'-'}{item.name}{' '}({item.credentials})
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
 
-                    <CardDeck>
-                        {this.state.testimonials.length
-                        ?
-                            this.state.testimonials.map((item, index) => { return (
-
-
-                                <Card border="success" style={{ width: '18rem' }}>
-                                    
-                                    <Card.Body>
-                                    <Card.Title></Card.Title>
-                                    <Card.Img variant="bottom" src={RedQuote} style={{height:'30px',width:'30px'}}/>
-                                    <p></p>
-                                    <Card.Text style={{fontStyle:'italic', fontWeight:'400'}}>
-                                    {item.content}
-                                    </Card.Text>
-                                    
-                                    <Card.Text style={{fontWeight:'bold'}}>
-                                        {item.name}{' '}({item.credentials})
-                                    </Card.Text>
-                                    
-                                    </Card.Body>
-                                </Card>
-
-                            )})
-                        :
-                            <div style={{textAlign: 'center', padding: 5, fontFamily: 'Arial', fontStyle: 'italic', color: '#404040'}}>No testimnoials currently available.</div>
-                        }
-
-                    </CardDeck>
-
-                        </Col>
-                    </Row>
+                        )})}
+                        </CardDeck>  
+                    :
+                        <div style={{textAlign: 'center', padding: 5, fontFamily: 'Arial', fontStyle: 'italic', color: '#404040'}}>No testimnoials currently available.</div>
+                    }
                 </Container>
             </div>
         )
