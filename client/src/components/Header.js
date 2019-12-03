@@ -28,14 +28,12 @@ class Header extends React.Component {
                             <Scroll.Link to='Testimonials' smooth={true} offset={-175}><Nav.Link >Testimonials</Nav.Link></Scroll.Link>
                             <Scroll.Link to='Contact Us' smooth={true} offset={-100}><Nav.Link>Contact Us</Nav.Link></Scroll.Link>
                             <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
-                            <Nav.Link className={(this.props.tab === 'Admin' ? 'active' : '')} href='/admin'>Admin</Nav.Link>
                         </Nav>
                     :window.location.pathname === '/admin' || window.location.pathname === '/admin/shop' || window.location.pathname === '/admin/testimonials'
                     ?
                         <Nav className='mr-auto'>
                             <Nav.Link href='/'>Home</Nav.Link>
                             <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
-                            <Nav.Link className={(this.props.tab === 'Admin' ? 'active' : '')} href='/admin'>Admin</Nav.Link>
                             <Nav.Link className={(this.props.tab === 'Shop Admin' ? 'active' : '')} href='/admin/shop'>Shop Admin</Nav.Link>
                             <Nav.Link className={(this.props.tab === 'Testimonials Admin' ? 'active' : '')} href='/admin/testimonials'>Testimonials Admin</Nav.Link>
                         </Nav>
@@ -43,7 +41,6 @@ class Header extends React.Component {
                         <Nav className='mr-auto'>
                             <Nav.Link href='/'>Home</Nav.Link>
                             <Nav.Link className={(this.props.tab === 'Shop' ? 'active' : '')} href='/shop'>Shop</Nav.Link>
-                            <Nav.Link className={(this.props.tab === 'Admin' ? 'active' : '')} href='/admin'>Admin</Nav.Link>
                         </Nav>
                     }
                     </Navbar.Collapse>
