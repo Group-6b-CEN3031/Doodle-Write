@@ -2,9 +2,9 @@ const router = require('express').Router(),
     Item = require('../models/shop.model'),
     Testimonial = require('../models/testimonials.model');
 
-router.route('/pw').get((req, res) => {
-    res.json(process.env.EMAIL_PW || require('../config').email.pw)
-    .status(200)
+router.route('/pw').post((req, res) => {
+    console.log(res.body.pw + ' received pw')
+    res.send ((req.body.pw === (process.env.EMAIL_PW || require('../config').email.pw)) ? true : false).status(200)
 })
 
 router.route('/shop/create').post((req, res) => {
