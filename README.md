@@ -12,7 +12,7 @@
 	- A page that takes in user credentials and allows an admin to modify the database that presents the shop and testimonials.
 - #### `Header`
 	- A page header that scrolls to different portions of the home page, redirects to the shop, or redirects to the admin page.
-- #### `Foot`
+- #### `Footer`
 	- A page footer that includes social media links.
 - #### `Cart`
 	- A component that keeps track of the items added and the total cost including shipping and handling. Includes a checkout button that allows Stripe to take in information and process payments. All payment information is sent to the clients stripe account.
