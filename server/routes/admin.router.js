@@ -3,8 +3,13 @@ const router = require('express').Router(),
     Testimonial = require('../models/testimonials.model');
 
 router.route('/pw').post((req, res) => {
-    console.log(res.body.pw + ' received pw')
-    res.send ((req.body.pw === (process.env.EMAIL_PW || require('../config').email.pw)) ? true : false).status(200)
+    console.log(JSON.parse(req.body) + ' received pw')
+    if (req.body === (process.env.EMAIL_PW || require('../config').email.pw)) {
+        res.send ({result: true}).status(200)
+    }
+    else{
+        res.send ({result: false}).status(201)
+    }
 })
 
 router.route('/shop/create').post((req, res) => {
