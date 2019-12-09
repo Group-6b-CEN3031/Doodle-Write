@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Axios from 'axios';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 
 class Admin extends React.Component {
@@ -36,7 +36,7 @@ class Admin extends React.Component {
         })
     }
 
-    authenticate = async () => {
+    beforeAuthenticate = async () => {
         var pw = await Axios.get('/admin/pw')
         if (this.state.password === pw.data) {
             alert('Authenticated!')
@@ -48,14 +48,28 @@ class Admin extends React.Component {
         }
     }
 
+    afterAuthenticate = () => {
+            this.setState({
+                value: ''
+            })
+        }
+
+    authenticate = () => {
+        this.beforeAuthenticate();
+        this.afterAuthenticate();
+    }
+
     render() {
         return (
             <React.Fragment>
                 <Header/>
-                <div style={{width: '100%', justifyContent: 'center', alignItems: 'center', textAlign: 'center', minHeight: window.innerHeight - 120, paddingTop: '5%'}}>
-                    <input type='password' name='value' Placeholder='Password' onChange={this.handleChange} value={this.state.value} />
+                <Form style={{paddingTop: 30, paddingBottom: 30, paddingLeft: '30%', paddingRight: '30%'}}>
+                    <div style={{paddingBottom: 10, textAlign: 'center', fontFamily: 'Arial Rounded MT Bold'}}>Enter Password:</div>
+                    <Form.Group controlId="formGroupValue" style={{width: '48%', marginRight:'4%', display:"inline-block"}}>
+                        <input type='password' name='value' Placeholder='Password' onChange={this.handleChange} value={this.state.value} />
+                    </Form.Group>
                     <div style={{textAlign: 'center'}}> <Button onClick={() => this.authenticate()} style={{width:'10%'}}> Submit </Button> </div>
-                </div>
+                </Form>
                 <Footer/>
             </React.Fragment>
         )
