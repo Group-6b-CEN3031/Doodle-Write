@@ -23,7 +23,7 @@ class Admin extends React.Component {
 */
     componentWillMount = async () => {
         const input = prompt('Please input the password to view this page:')
-        var pw = await Axios.get('/admin/pw')
+        var pw = await Axios.get('/admin/iKKgWX6hkdDByZC6tzMQ')
         if (input === pw.data) {
             alert('Authenticated!')
             this.props.adminAuthenticated(true)

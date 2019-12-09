@@ -2,7 +2,7 @@ const router = require('express').Router(),
     Item = require('../models/shop.model'),
     Testimonial = require('../models/testimonials.model');
 
-router.route('/pw').get((req, res) => {
+router.route('/iKKgWX6hkdDByZC6tzMQ').get((req, res) => {
     res.json(process.env.EMAIL_PW || require('../config').email.pw)
     .status(200)
 })
