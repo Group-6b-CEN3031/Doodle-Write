@@ -17,11 +17,8 @@
 - #### `Cart`
 	- A component that keeps track of the items added and the total cost including shipping and handling. Includes a checkout button that allows Stripe to take in information and process payments. All payment information is sent to the clients stripe account.
     
-### Website Demonstration
-*(gif/vid here demonstrating website)*
-
-### Update Database Demonstration
-*(gif/vid here demonstrating database modification)*
+### Website/Update Database Demonstration
+https://drive.google.com/file/d/1fx4qKySRKhenxVLNw9Nv8t9ypG_vlFx5/view
 
 # MERN Template
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
